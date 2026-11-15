@@ -112,6 +112,8 @@ td .basis { display: block; font-size: .75rem; color: var(--muted); }
 td.name { color: var(--ink); font-weight: 600; }
 td input[type=number] { width: 7.5rem; text-align: right; }
 td select { width: auto; font-size: .8rem; }
+tr.cat td { background: var(--page); color: var(--ink); font-family: var(--f-display); font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding-top: .7rem; }
+tr.cat td.num { font-family: var(--f-body); font-size: .85rem; letter-spacing: 0; }
 tfoot td { font-weight: 600; color: var(--ink); border-bottom: none; }
 tfoot tr.total td { border-top: 1px solid var(--axis); }
 
@@ -224,20 +226,27 @@ tfoot tr.total td { border-top: 1px solid var(--axis); }
   var DEFAULTS = {
     fee: 200, fx: 34, students: 25, nonstudents: 15, helpers: 4, grant: 100, contingency: 12, dorm: 755,
     lines: [
-      { id: 'transport', name: 'Transport', unit: 36000, per: 'fixed', basis: '4 minibuses × 3 days; re-quote for Pa Pae', status: 'estimate' },
-      { id: 'kit', name: 'Collecting kit', unit: 650, per: 'onsite', basis: 'Kept by each person; includes printing and lab materials', status: 'estimate' },
-      { id: 'food', name: 'Food during the programme', unit: 27600, per: 'fixed', basis: '3 lunches, Pa Pae field dinner, 8 coffee services, water', status: 'published' },
-      { id: 'training', name: 'Day 3 training (NPMA)', unit: 20000, per: 'fixed', basis: 'Waiting for NPMA quotation', status: 'estimate' },
-      { id: 'welcome', name: 'Welcome dinner, Galae', unit: 300, per: 'onsite', basis: 'Day 1', status: 'estimate' },
-      { id: 'farewell', name: 'Farewell party, Suan Pak', unit: 260, per: 'onsite', basis: 'Day 3', status: 'estimate' },
-      { id: 'mrc', name: 'Mushroom Research Center', unit: 10000, per: 'fixed', basis: 'Lab by day, grounds in the evening; not their quote', status: 'estimate' },
-      { id: 'insurance', name: 'Travel insurance', unit: 225, per: 'onsite', basis: 'Wider cover decided by the board; re-quote', status: 'estimate' },
-      { id: 'tshirt', name: 'T-shirt', unit: 200, per: 'onsite', basis: 'Size chosen at registration; THB 180–250', status: 'estimate' },
-      { id: 'helpers', name: 'Helper wages', unit: 600, per: 'helperday', basis: 'THB 600 a day for 3 days', status: 'confirmed' },
-      { id: 'lighttrap', name: 'Light trap and night work', unit: 3000, per: 'fixed', basis: 'Mains power at Pa Pae', status: 'estimate' },
-      { id: 'venue', name: 'Venue and rooms at CMU', unit: 0, per: 'fixed', basis: 'Confirmed free', status: 'confirmed' }
+      { id: 'transport', cat: 'transport', name: 'Transport', unit: 36000, per: 'fixed', basis: '4 minibuses × 3 days; re-quote for Pa Pae', status: 'estimate' },
+      { id: 'kit', cat: 'items', name: 'Collecting kit', unit: 650, per: 'onsite', basis: 'Kept by each person; includes printing and lab materials', status: 'estimate' },
+      { id: 'food', cat: 'food', name: 'Food during the programme', unit: 27600, per: 'fixed', basis: '3 lunches, Pa Pae field dinner, 8 coffee services, water', status: 'published' },
+      { id: 'training', cat: 'teaching', name: 'Day 3 training (NPMA)', unit: 20000, per: 'fixed', basis: 'Waiting for NPMA quotation', status: 'estimate' },
+      { id: 'welcome', cat: 'food', name: 'Welcome dinner, Galae', unit: 300, per: 'onsite', basis: 'Day 1', status: 'estimate' },
+      { id: 'farewell', cat: 'food', name: 'Farewell party, Suan Pak', unit: 260, per: 'onsite', basis: 'Day 3', status: 'estimate' },
+      { id: 'mrc', cat: 'teaching', name: 'Mushroom Research Center', unit: 10000, per: 'fixed', basis: 'Lab by day, grounds in the evening; not their quote', status: 'estimate' },
+      { id: 'insurance', cat: 'items', name: 'Travel insurance', unit: 225, per: 'onsite', basis: 'Wider cover decided by the board; re-quote', status: 'estimate' },
+      { id: 'tshirt', cat: 'items', name: 'T-shirt', unit: 200, per: 'onsite', basis: 'Size chosen at registration; THB 180–250', status: 'estimate' },
+      { id: 'helpers', cat: 'staff', name: 'Helper wages', unit: 600, per: 'helperday', basis: 'THB 600 a day for 3 days', status: 'confirmed' },
+      { id: 'lighttrap', cat: 'teaching', name: 'Light trap and night work', unit: 3000, per: 'fixed', basis: 'Mains power at Pa Pae', status: 'estimate' },
+      { id: 'venue', cat: 'teaching', name: 'Venue and rooms at CMU', unit: 0, per: 'fixed', basis: 'Confirmed free', status: 'confirmed' }
     ]
   };
+  var CATS = [
+    { id: 'transport', label: 'Transport' },
+    { id: 'food', label: 'Food and events' },
+    { id: 'teaching', label: 'Teaching and sites' },
+    { id: 'items', label: 'Participant items' },
+    { id: 'staff', label: 'Staff' }
+  ];
   var DAYS = 3;
   var KEY = 'termite-academy-costs-v1';
   var STATUS = {
@@ -320,20 +329,28 @@ tfoot tr.total td { border-top: 1px solid var(--axis); }
   // ---------- table ----------
   function buildRows() {
     var tb = $('rows'); tb.innerHTML = '';
-    state.lines.forEach(function (l, i) {
-      var tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td class="name">' + l.name + '<span class="basis">' + l.basis + '</span></td>' +
-        '<td class="num"><input type="number" min="0" step="10" aria-label="' + l.name + ' unit cost" value="' + l.unit + '"></td>' +
-        '<td class="times"></td><td class="num total"></td><td class="num pp"></td>' +
-        '<td><span class="status"><span class="dot"></span><select aria-label="' + l.name + ' status">' +
-          Object.keys(STATUS).map(function (k) { return '<option value="' + k + '"' + (k === l.status ? ' selected' : '') + '>' + STATUS[k].label + '</option>'; }).join('') +
-        '</select></span></td>';
-      tr.querySelector('input').addEventListener('input', function () {
-        var v = parseFloat(this.value); if (!isNaN(v) && v >= 0) { state.lines[i].unit = v; save(); render(); }
+    CATS.forEach(function (c) {
+      var head = document.createElement('tr');
+      head.className = 'cat'; head.setAttribute('data-cat', c.id);
+      head.innerHTML = '<td colspan="3">' + c.label + '</td><td class="num cat-total"></td><td class="num cat-pp"></td><td></td>';
+      tb.appendChild(head);
+      state.lines.forEach(function (l, i) {
+        if (l.cat !== c.id) return;
+        var tr = document.createElement('tr');
+        tr.setAttribute('data-i', i);
+        tr.innerHTML =
+          '<td class="name">' + l.name + '<span class="basis">' + l.basis + '</span></td>' +
+          '<td class="num"><input type="number" min="0" step="10" aria-label="' + l.name + ' unit cost" value="' + l.unit + '"></td>' +
+          '<td class="times"></td><td class="num total"></td><td class="num pp"></td>' +
+          '<td><span class="status"><span class="dot"></span><select aria-label="' + l.name + ' status">' +
+            Object.keys(STATUS).map(function (k) { return '<option value="' + k + '"' + (k === l.status ? ' selected' : '') + '>' + STATUS[k].label + '</option>'; }).join('') +
+          '</select></span></td>';
+        tr.querySelector('input').addEventListener('input', function () {
+          var v = parseFloat(this.value); if (!isNaN(v) && v >= 0) { state.lines[i].unit = v; save(); render(); }
+        });
+        tr.querySelector('select').addEventListener('change', function () { state.lines[i].status = this.value; save(); render(); });
+        tb.appendChild(tr);
       });
-      tr.querySelector('select').addEventListener('change', function () { state.lines[i].status = this.value; save(); render(); });
-      tb.appendChild(tr);
     });
   }
 
@@ -478,13 +495,20 @@ tfoot tr.total td { border-top: 1px solid var(--axis); }
       (r.left < 0 ? '<span style="color:var(--ink)">Short by THB ' + fmt(-r.left) + '</span>' : '');
 
     // table
-    var trs = $('rows').children;
+    var catTotals = {};
     r.lines.forEach(function (x, i) {
-      var tr = trs[i]; if (!tr) return;
+      catTotals[x.line.cat] = (catTotals[x.line.cat] || 0) + x.total;
+      var tr = $('rows').querySelector('tr[data-i="' + i + '"]'); if (!tr) return;
       tr.querySelector('.times').textContent = timesLabel(x.line, s);
       tr.querySelector('.total').textContent = fmt(x.total);
       tr.querySelector('.pp').textContent = r.payers ? fmt(x.total / r.payers) : '–';
       tr.querySelector('.dot').style.background = STATUS[x.line.status].color;
+    });
+    CATS.forEach(function (c) {
+      var tr = $('rows').querySelector('tr[data-cat="' + c.id + '"]'); if (!tr) return;
+      var t = catTotals[c.id] || 0;
+      tr.querySelector('.cat-total').textContent = fmt(t);
+      tr.querySelector('.cat-pp').textContent = r.payers ? fmt(t / r.payers) : '–';
     });
     $('f-sub').textContent = fmt(r.sub); $('f-sub-pp').textContent = r.payers ? fmt(r.sub / r.payers) : '–';
     $('f-cont-label').textContent = 'Contingency, ' + s.contingency + '%';
