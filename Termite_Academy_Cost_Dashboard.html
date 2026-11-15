@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Termite Academy Costs</title>
+<meta name="description" content="Live cost calculator for the 1st PRTRG Termite Academy, 4–6 May 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --ring: rgba(11,11,11,0.10);
+  --accent: #1165a4;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+  --neg: #e34948;
+  --good: #0ca30c; --good-text: #006300;
+  --warn: #fab219; --critical: #d03b3b;
+  --input-bg: #ffffff;
+  --f-display: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  --f-body: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --accent: #6cb2e8;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --neg: #e66767;
+    --good-text: #0ca30c; --input-bg: #232322;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --accent: #6cb2e8;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --neg: #e66767;
+  --good-text: #0ca30c; --input-bg: #232322;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink-2); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+h1, h2 { font-family: var(--f-display); color: var(--ink); margin: 0; line-height: 1.2; }
+h1 { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem); }
+h2 { font-size: 1rem; }
+.wrap { max-width: 72rem; margin: 0 auto; padding: 1.5rem 16px 3rem; }
+header.top { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: end; justify-content: space-between; margin-bottom: 1.25rem; }
+.eyebrow { font-family: var(--f-display); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 .3rem; }
+.top-actions { display: flex; gap: .5rem; }
+button { font: inherit; font-size: .85rem; color: var(--ink); background: var(--surface); border: 1px solid var(--axis); border-radius: 6px; padding: .35rem .75rem; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 1rem 1.1rem; min-width: 0; }
+.grid { display: grid; gap: 1rem; }
+.top-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+@media (max-width: 860px) { .top-grid { grid-template-columns: 1fr; } }
+
+/* Inputs */
+.inputs { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem .9rem; margin-top: .8rem; }
+.inputs label { display: grid; gap: .2rem; font-size: .8rem; color: var(--ink-2); }
+input[type=number], select {
+  font: inherit; font-size: .95rem; color: var(--ink); background: var(--input-bg);
+  border: 1px solid var(--axis); border-radius: 6px; padding: .35rem .5rem; width: 100%; min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+input[type=number]:focus, select:focus { border-color: var(--accent); outline: none; }
+
+/* Hero + tiles */
+.hero-label { font-size: .85rem; color: var(--ink-2); }
+.hero { font-family: var(--f-body); font-weight: 600; font-size: clamp(2.6rem, 2rem + 2.5vw, 3.6rem); color: var(--ink); line-height: 1.05; margin: .15rem 0 .35rem; }
+.hero-sub { font-size: .85rem; }
+.status { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; font-weight: 600; }
+.status .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+@media (max-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile { border-top: 1px solid var(--grid); padding-top: .55rem; }
+.tile .k { font-size: .78rem; color: var(--ink-2); }
+.tile .v { font-size: 1.3rem; font-weight: 600; color: var(--ink); }
+.tile .n { font-size: .75rem; color: var(--muted); }
+
+/* Segmented bar */
+.seg { display: flex; gap: 2px; height: 28px; margin: .9rem 0 .5rem; }
+.seg div { border-radius: 4px; display: flex; align-items: center; padding-left: 6px; font-size: .75rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: visible; min-width: 0; position: relative; }
+.seg div.dark-label { color: #0b0b0b; }
+.legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .8rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+/* Charts */
+.chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.chart-head p { margin: .15rem 0 0; font-size: .8rem; color: var(--muted); }
+svg text { font-family: var(--f-body); }
+.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--surface); font-size: .78rem; padding: .35rem .55rem; border-radius: 6px; opacity: 0; transition: opacity .1s; z-index: 10; max-width: 16rem; }
+.tip b { font-weight: 600; }
+
+/* Table */
+.table-scroll { overflow-x: auto; margin-top: .8rem; }
+table { border-collapse: collapse; width: 100%; font-size: .85rem; min-width: 640px; }
+th, td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--grid); vertical-align: middle; }
+th { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td .basis { display: block; font-size: .75rem; color: var(--muted); }
+td.name { color: var(--ink); font-weight: 600; }
+td input[type=number] { width: 7.5rem; text-align: right; }
+td select { width: auto; font-size: .8rem; }
+tfoot td { font-weight: 600; color: var(--ink); border-bottom: none; }
+tfoot tr.total td { border-top: 1px solid var(--axis); }
+
+.fees table { min-width: 420px; }
+.note { font-size: .8rem; color: var(--muted); margin: .6rem 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div>
+    <p class="eyebrow">1st PRTRG Termite Academy · 4–6 May 2027</p>
+    <h1>Cost dashboard</h1>
+  </div>
+  <div class="top-actions">
+    <button type="button" id="reset">Reset to plan figures</button>
+  </div>
+</header>
+
+<div class="grid top-grid">
+  <section class="card" aria-labelledby="in-h">
+    <h2 id="in-h">Assumptions</h2>
+    <div class="inputs">
+      <label>Fee per person, USD <input type="number" id="fee" min="0" step="5"></label>
+      <label>THB per USD <input type="number" id="fx" min="1" step="0.5"></label>
+      <label>Students <input type="number" id="students" min="0" step="1"></label>
+      <label>Non-students <input type="number" id="nonstudents" min="0" step="1"></label>
+      <label>Helpers (unpaid places) <input type="number" id="helpers" min="0" step="1"></label>
+      <label>Student grant, USD <input type="number" id="grant" min="0" step="5"></label>
+      <label>Contingency, % <input type="number" id="contingency" min="0" step="1"></label>
+      <label>Student dorm, THB <input type="number" id="dorm" min="0" step="5"></label>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="hero-h">
+    <h2 id="hero-h" class="hero-label" style="font-family:var(--f-body);font-weight:400;color:var(--ink-2)">Left over after all costs and student grants</h2>
+    <div class="hero" id="hero">–</div>
+    <div class="hero-sub" id="hero-sub"></div>
+
+    <div class="seg" id="seg" role="img"></div>
+    <div class="legend" id="seg-legend"></div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Registration income</div><div class="v" id="t-income">–</div><div class="n" id="t-income-n"></div></div>
+      <div class="tile"><div class="k">Costs</div><div class="v" id="t-cost">–</div><div class="n" id="t-cost-n"></div></div>
+      <div class="tile"><div class="k">Student grants</div><div class="v" id="t-grant">–</div><div class="n" id="t-grant-n"></div></div>
+      <div class="tile"><div class="k">A student pays, all in</div><div class="v" id="t-student">–</div><div class="n" id="t-student-n"></div></div>
+    </div>
+  </section>
+</div>
+
+<div class="grid top-grid" style="margin-top:1rem">
+  <section class="card" aria-labelledby="be-h">
+    <div class="chart-head">
+      <div>
+        <h2 id="be-h">Left over by number of non-students</h2>
+        <p>Students fixed; costs scale with people on site. Before contingency.</p>
+      </div>
+    </div>
+    <svg id="be" width="100%" height="230" role="img" aria-label="Left over by number of non-students"></svg>
+    <p class="note" id="be-note"></p>
+  </section>
+
+  <section class="card" aria-labelledby="cl-h">
+    <div class="chart-head">
+      <div>
+        <h2 id="cl-h">Cost by line</h2>
+        <p>THB, largest first</p>
+      </div>
+    </div>
+    <svg id="lines" width="100%" height="360" role="img" aria-label="Cost by line, THB"></svg>
+  </section>
+</div>
+
+<section class="card" style="margin-top:1rem" aria-labelledby="tb-h">
+  <h2 id="tb-h">Cost lines</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Line</th><th class="num">Unit, THB</th><th>Times</th><th class="num">Total, THB</th><th class="num">Per payer</th><th>Status</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+      <tfoot>
+        <tr><td colspan="3">Subtotal</td><td class="num" id="f-sub"></td><td class="num" id="f-sub-pp"></td><td></td></tr>
+        <tr><td colspan="3" id="f-cont-label">Contingency</td><td class="num" id="f-cont"></td><td class="num" id="f-cont-pp"></td><td></td></tr>
+        <tr class="total"><td colspan="3">Total with contingency</td><td class="num" id="f-total"></td><td class="num" id="f-total-pp"></td><td></td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="card fees" style="margin-top:1rem" aria-labelledby="fo-h">
+  <h2 id="fo-h">Fee options</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Fee</th><th class="num">Income</th><th class="num">Left over</th><th class="num">If contingency is all spent</th><th class="num">Non-students needed</th><th class="num">Student pays, all in</th></tr></thead>
+      <tbody id="fee-rows"></tbody>
+    </table>
+  </div>
+  <p class="note">Non-students needed: the smallest number, out of the planned total, at which the left-over figure is zero or more. Accommodation is booked and paid separately and is not in these costs.</p>
+</section>
+
+</div>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function () {
+  var DEFAULTS = {
+    fee: 200, fx: 34, students: 25, nonstudents: 15, helpers: 4, grant: 100, contingency: 12, dorm: 755,
+    lines: [
+      { id: 'transport', name: 'Transport', unit: 36000, per: 'fixed', basis: '4 minibuses × 3 days; re-quote for Pa Pae', status: 'estimate' },
+      { id: 'kit', name: 'Collecting kit', unit: 650, per: 'onsite', basis: 'Kept by each person; includes printing and lab materials', status: 'estimate' },
+      { id: 'food', name: 'Food during the programme', unit: 27600, per: 'fixed', basis: '3 lunches, Pa Pae field dinner, 8 coffee services, water', status: 'published' },
+      { id: 'training', name: 'Day 3 training (NPMA)', unit: 20000, per: 'fixed', basis: 'Waiting for NPMA quotation', status: 'estimate' },
+      { id: 'welcome', name: 'Welcome dinner, Galae', unit: 300, per: 'onsite', basis: 'Day 1', status: 'estimate' },
+      { id: 'farewell', name: 'Farewell party, Suan Pak', unit: 260, per: 'onsite', basis: 'Day 3', status: 'estimate' },
+      { id: 'mrc', name: 'Mushroom Research Center', unit: 10000, per: 'fixed', basis: 'Lab by day, grounds in the evening; not their quote', status: 'estimate' },
+      { id: 'insurance', name: 'Travel insurance', unit: 225, per: 'onsite', basis: 'Wider cover decided by the board; re-quote', status: 'estimate' },
+      { id: 'tshirt', name: 'T-shirt', unit: 200, per: 'onsite', basis: 'Size chosen at registration; THB 180–250', status: 'estimate' },
+      { id: 'helpers', name: 'Helper wages', unit: 600, per: 'helperday', basis: 'THB 600 a day for 3 days', status: 'confirmed' },
+      { id: 'lighttrap', name: 'Light trap and night work', unit: 3000, per: 'fixed', basis: 'Mains power at Pa Pae', status: 'estimate' },
+      { id: 'venue', name: 'Venue and rooms at CMU', unit: 0, per: 'fixed', basis: 'Confirmed free', status: 'confirmed' }
+    ]
+  };
+  var DAYS = 3;
+  var KEY = 'termite-academy-costs-v1';
+  var STATUS = {
+    confirmed: { label: 'Confirmed', color: 'var(--good)' },
+    published: { label: 'Published rate', color: 'var(--good)' },
+    estimate:  { label: 'Estimate', color: 'var(--warn)' }
+  };
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var saved = JSON.parse(raw);
+        var st = clone(DEFAULTS);
+        Object.keys(st).forEach(function (k) { if (k !== 'lines' && typeof saved[k] === 'number') st[k] = saved[k]; });
+        if (Array.isArray(saved.lines)) {
+          st.lines.forEach(function (l) {
+            var m = saved.lines.filter(function (x) { return x.id === l.id; })[0];
+            if (m) { if (typeof m.unit === 'number') l.unit = m.unit; if (STATUS[m.status]) l.status = m.status; }
+          });
+        }
+        return st;
+      }
+    } catch (e) {}
+    return clone(DEFAULTS);
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  var state = load();
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+  var thb = function (n) { return (n < 0 ? '−' : '') + 'THB ' + fmt(Math.abs(n)); };
+  var signed = function (n) { return (n < 0 ? '−' : '+') + fmt(Math.abs(n)); };
+
+  function times(l, s) {
+    if (l.per === 'onsite') return s.students + s.nonstudents + s.helpers;
+    if (l.per === 'helperday') return s.helpers * DAYS;
+    return 1;
+  }
+  function timesLabel(l, s) {
+    if (l.per === 'onsite') return '× ' + times(l, s) + ' on site';
+    if (l.per === 'helperday') return '× ' + s.helpers + ' helpers × ' + DAYS + ' days';
+    return 'fixed';
+  }
+  function compute(s) {
+    var payers = s.students + s.nonstudents;
+    var onsite = payers + s.helpers;
+    var lines = s.lines.map(function (l) { return { line: l, total: l.unit * times(l, s) }; });
+    var sub = lines.reduce(function (a, x) { return a + x.total; }, 0);
+    var cont = sub * s.contingency / 100;
+    var income = payers * s.fee * s.fx;
+    var grants = s.students * s.grant * s.fx;
+    var left = income - sub - grants;
+    return { payers: payers, onsite: onsite, lines: lines, sub: sub, cont: cont, income: income, grants: grants,
+             left: left, leftAfter: left - cont,
+             studentPays: s.fee * s.fx - s.grant * s.fx + s.dorm };
+  }
+  function breakEven(s) {
+    for (var n = 0; n <= s.nonstudents; n++) {
+      var t = clone(s); t.nonstudents = n;
+      if (compute(t).left >= 0) return n;
+    }
+    return null;
+  }
+
+  // ---------- inputs ----------
+  var fields = ['fee', 'fx', 'students', 'nonstudents', 'helpers', 'grant', 'contingency', 'dorm'];
+  function syncInputs() { fields.forEach(function (f) { $(f).value = state[f]; }); }
+  fields.forEach(function (f) {
+    $(f).addEventListener('input', function () {
+      var v = parseFloat(this.value);
+      if (!isNaN(v) && v >= 0) { state[f] = v; save(); render(); }
+    });
+  });
+  $('reset').addEventListener('click', function () {
+    state = clone(DEFAULTS); save(); syncInputs(); buildRows(); render();
+  });
+
+  // ---------- table ----------
+  function buildRows() {
+    var tb = $('rows'); tb.innerHTML = '';
+    state.lines.forEach(function (l, i) {
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td class="name">' + l.name + '<span class="basis">' + l.basis + '</span></td>' +
+        '<td class="num"><input type="number" min="0" step="10" aria-label="' + l.name + ' unit cost" value="' + l.unit + '"></td>' +
+        '<td class="times"></td><td class="num total"></td><td class="num pp"></td>' +
+        '<td><span class="status"><span class="dot"></span><select aria-label="' + l.name + ' status">' +
+          Object.keys(STATUS).map(function (k) { return '<option value="' + k + '"' + (k === l.status ? ' selected' : '') + '>' + STATUS[k].label + '</option>'; }).join('') +
+        '</select></span></td>';
+      tr.querySelector('input').addEventListener('input', function () {
+        var v = parseFloat(this.value); if (!isNaN(v) && v >= 0) { state.lines[i].unit = v; save(); render(); }
+      });
+      tr.querySelector('select').addEventListener('change', function () { state.lines[i].status = this.value; save(); render(); });
+      tb.appendChild(tr);
+    });
+  }
+
+  // ---------- tooltip ----------
+  var tip = $('tip');
+  function showTip(e, html) { tip.innerHTML = html; tip.style.opacity = 1; moveTip(e); }
+  function moveTip(e) {
+    var x = e.clientX + 14, y = e.clientY + 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    if (x + w > window.innerWidth - 8) x = e.clientX - w - 14;
+    if (y + h > window.innerHeight - 8) y = e.clientY - h - 14;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hideTip() { tip.style.opacity = 0; }
+  function bindTip(el, html) {
+    el.addEventListener('mouseenter', function (e) { showTip(e, html); });
+    el.addEventListener('mousemove', moveTip);
+    el.addEventListener('mouseleave', hideTip);
+  }
+
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  // bar path: 4px rounded data end, square at baseline
+  function hbar(x0, y, w, h) {
+    var r = Math.min(4, w / 2, h / 2); if (w <= 0) return '';
+    return 'M' + x0 + ',' + y + 'H' + (x0 + w - r) + 'Q' + (x0 + w) + ',' + y + ' ' + (x0 + w) + ',' + (y + r) +
+      'V' + (y + h - r) + 'Q' + (x0 + w) + ',' + (y + h) + ' ' + (x0 + w - r) + ',' + (y + h) + 'H' + x0 + 'Z';
+  }
+  function vbar(x, y0, w, hgt) { // hgt>0 up, <0 down from baseline y0
+    var up = hgt >= 0, h = Math.abs(hgt), r = Math.min(4, w / 2, h / 2); if (h === 0) return '';
+    if (up) {
+      var top = y0 - h;
+      return 'M' + x + ',' + y0 + 'V' + (top + r) + 'Q' + x + ',' + top + ' ' + (x + r) + ',' + top +
+        'H' + (x + w - r) + 'Q' + (x + w) + ',' + top + ' ' + (x + w) + ',' + (top + r) + 'V' + y0 + 'Z';
+    }
+    var bot = y0 + h;
+    return 'M' + x + ',' + y0 + 'V' + (bot - r) + 'Q' + x + ',' + bot + ' ' + (x + r) + ',' + bot +
+      'H' + (x + w - r) + 'Q' + (x + w) + ',' + bot + ' ' + (x + w) + ',' + (bot - r) + 'V' + y0 + 'Z';
+  }
+  function niceStep(range, target) {
+    var raw = range / target, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p;
+    return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p;
+  }
+  function compact(n) { var a = Math.abs(n); var s = a >= 1000 ? (a / 1000).toFixed(a % 1000 ? 1 : 0).replace('.0', '') + 'K' : String(a); return (n < 0 ? '−' : '') + s; }
+
+  // ---------- cost-by-line chart ----------
+  function drawLines(r) {
+    var svg = $('lines'); svg.innerHTML = '';
+    var W = svg.clientWidth || 600;
+    var items = r.lines.filter(function (x) { return x.total > 0; }).sort(function (a, b) { return b.total - a.total; });
+    var labelW = Math.min(170, W * 0.38), right = 58, rowH = 28, barH = 16, top = 4;
+    var H = top + items.length * rowH + 22; svg.setAttribute('height', H);
+    var max = Math.max.apply(null, items.map(function (x) { return x.total; }).concat([1]));
+    var step = niceStep(max, 4), axisMax = Math.ceil(max / step) * step;
+    var plotW = Math.max(40, W - labelW - right);
+    var sx = function (v) { return labelW + v / axisMax * plotW; };
+    for (var t = 0; t <= axisMax + 1e-9; t += step) {
+      el('line', { x1: sx(t), x2: sx(t), y1: top, y2: H - 18, stroke: t === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 1 }, svg);
+      var tx = el('text', { x: sx(t), y: H - 4, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--muted)' }, svg); tx.textContent = compact(t);
+    }
+    items.forEach(function (x, i) {
+      var y = top + i * rowH + (rowH - barH) / 2;
+      var name = el('text', { x: labelW - 8, y: y + barH / 2 + 4, 'text-anchor': 'end', 'font-size': 12, fill: 'var(--ink-2)' }, svg);
+      name.textContent = x.line.name.length > 26 ? x.line.name.slice(0, 25) + '…' : x.line.name;
+      el('path', { d: hbar(sx(0), y, sx(x.total) - sx(0), barH), fill: 'var(--s1)' }, svg);
+      var v = el('text', { x: sx(x.total) + 6, y: y + barH / 2 + 4, 'font-size': 11, fill: 'var(--ink-2)' }, svg); v.textContent = fmt(x.total);
+      var hit = el('rect', { x: 0, y: top + i * rowH, width: W, height: rowH, fill: 'transparent' }, svg);
+      bindTip(hit, '<b>' + x.line.name + '</b><br>THB ' + fmt(x.total) + ' · ' + Math.round(x.total / r.sub * 100) + '% of costs<br>' + STATUS[x.line.status].label);
+    });
+  }
+
+  // ---------- break-even chart ----------
+  function drawBreakEven(s) {
+    var svg = $('be'); svg.innerHTML = '';
+    var W = svg.clientWidth || 400, H = 230, L = 46, R = 8, T = 10, B = 30;
+    var N = Math.max(s.nonstudents, 1), vals = [];
+    for (var n = 0; n <= N; n++) { var t = clone(s); t.nonstudents = n; vals.push(compute(t).left); }
+    var lo = Math.min(0, Math.min.apply(null, vals)), hi = Math.max(0, Math.max.apply(null, vals));
+    var step = niceStep((hi - lo) || 1, 4); lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step; if (hi === lo) hi = lo + step;
+    var sy = function (v) { return T + (hi - v) / (hi - lo) * (H - T - B); };
+    for (var g = lo; g <= hi + 1e-9; g += step) {
+      el('line', { x1: L, x2: W - R, y1: sy(g), y2: sy(g), stroke: Math.abs(g) < 1e-9 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 1 }, svg);
+      var tl = el('text', { x: L - 6, y: sy(g) + 4, 'text-anchor': 'end', 'font-size': 11, fill: 'var(--muted)' }, svg); tl.textContent = compact(g);
+    }
+    var band = (W - L - R) / (N + 1), bw = Math.min(24, band - 2);
+    vals.forEach(function (v, i) {
+      var x = L + i * band + (band - bw) / 2;
+      el('path', { d: vbar(x, sy(0), bw, sy(0) - sy(v)), fill: v >= 0 ? 'var(--s1)' : 'var(--neg)', opacity: i === s.nonstudents ? 1 : 0.55 }, svg);
+      if (i % (N > 10 ? 3 : 1) === 0 || i === N) {
+        var lab = el('text', { x: x + bw / 2, y: H - 10, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--muted)' }, svg); lab.textContent = i;
+      }
+      var hit = el('rect', { x: L + i * band, y: T, width: band, height: H - T - B, fill: 'transparent' }, svg);
+      bindTip(hit, '<b>' + i + ' non-students</b> + ' + s.students + ' students<br>Left over: ' + thb(v));
+    });
+    var be = breakEven(s);
+    $('be-note').textContent = be === null
+      ? 'Does not break even even with all ' + s.nonstudents + ' non-student places filled.'
+      : 'Breaks even with ' + be + ' of ' + s.nonstudents + ' non-student places filled. Darker bar: the current plan.';
+  }
+
+  // ---------- render ----------
+  function render() {
+    var s = state, r = compute(s);
+
+    $('hero').textContent = thb(r.left);
+    var after = r.leftAfter;
+    $('hero-sub').innerHTML =
+      '<span class="status"><span class="dot" style="background:' + (r.left >= 0 ? 'var(--good)' : 'var(--critical)') + '"></span>' +
+      (r.left >= 0 ? 'Covered' : 'Short') + '</span> · ' +
+      'If the full ' + s.contingency + '% contingency (THB ' + fmt(r.cont) + ') is spent: <b style="color:var(--ink)">' + thb(after) + '</b>';
+
+    $('t-income').textContent = fmt(r.income); $('t-income-n').textContent = r.payers + ' × USD ' + s.fee;
+    $('t-cost').textContent = fmt(r.sub); $('t-cost-n').textContent = 'Before contingency';
+    $('t-grant').textContent = fmt(r.grants); $('t-grant-n').textContent = s.students + ' × USD ' + s.grant;
+    $('t-student').textContent = fmt(r.studentPays); $('t-student-n').textContent = 'THB, with dorm; about USD ' + Math.round(r.studentPays / s.fx);
+
+    // segmented bar of income
+    var parts = [
+      { k: 'Costs', v: r.sub, c: 'var(--s1)' },
+      { k: 'Student grants', v: r.grants, c: 'var(--s2)' },
+      { k: 'Contingency', v: Math.max(0, Math.min(r.cont, r.left)), c: 'var(--s3)' },
+      { k: 'Left over', v: Math.max(0, r.leftAfter), c: 'var(--s4)', dark: true }
+    ];
+    var whole = Math.max(r.income, r.sub + r.grants);
+    var seg = $('seg'); seg.innerHTML = '';
+    seg.setAttribute('aria-label', 'Registration income split: ' + parts.map(function (p) { return p.k + ' THB ' + fmt(p.v); }).join(', '));
+    parts.forEach(function (p) {
+      if (p.v <= 0) return;
+      var d = document.createElement('div');
+      d.style.flex = p.v / whole + ' 1 0'; d.style.background = p.c;
+      if (p.dark) d.className = 'dark-label';
+      var pct = Math.round(p.v / whole * 100);
+      if (p.v / whole > 0.09) d.textContent = pct + '%';
+      bindTip(d, '<b>' + p.k + '</b><br>THB ' + fmt(p.v) + ' · ' + pct + '% of income');
+      seg.appendChild(d);
+    });
+    $('seg-legend').innerHTML = parts.map(function (p) { return '<span><i style="background:' + p.c + '"></i>' + p.k + '</span>'; }).join('') +
+      (r.left < 0 ? '<span style="color:var(--ink)">Short by THB ' + fmt(-r.left) + '</span>' : '');
+
+    // table
+    var trs = $('rows').children;
+    r.lines.forEach(function (x, i) {
+      var tr = trs[i]; if (!tr) return;
+      tr.querySelector('.times').textContent = timesLabel(x.line, s);
+      tr.querySelector('.total').textContent = fmt(x.total);
+      tr.querySelector('.pp').textContent = r.payers ? fmt(x.total / r.payers) : '–';
+      tr.querySelector('.dot').style.background = STATUS[x.line.status].color;
+    });
+    $('f-sub').textContent = fmt(r.sub); $('f-sub-pp').textContent = r.payers ? fmt(r.sub / r.payers) : '–';
+    $('f-cont-label').textContent = 'Contingency, ' + s.contingency + '%';
+    $('f-cont').textContent = fmt(r.cont); $('f-cont-pp').textContent = r.payers ? fmt(r.cont / r.payers) : '–';
+    $('f-total').textContent = fmt(r.sub + r.cont); $('f-total-pp').textContent = r.payers ? fmt((r.sub + r.cont) / r.payers) : '–';
+
+    // fee options
+    var opts = [s.fee, 180, 200, 220, 250].filter(function (v, i, a) { return a.indexOf(v) === i; }).sort(function (a, b) { return a - b; });
+    $('fee-rows').innerHTML = opts.map(function (f) {
+      var t = clone(s); t.fee = f; var rr = compute(t), be = breakEven(t);
+      var cur = f === s.fee ? ' style="font-weight:600;color:var(--ink)"' : '';
+      return '<tr' + cur + '><td>USD ' + f + (f === s.fee ? ' (current)' : '') + '</td><td class="num">' + fmt(rr.income) +
+        '</td><td class="num">' + signed(rr.left) + '</td><td class="num">' + signed(rr.leftAfter) +
+        '</td><td class="num">' + (be === null ? 'not reached' : be + ' of ' + s.nonstudents) +
+        '</td><td class="num">' + fmt(rr.studentPays) + '</td></tr>';
+    }).join('');
+
+    drawLines(r);
+    drawBreakEven(s);
+  }
+
+  syncInputs(); buildRows(); render();
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(render, 120); });
+})();
+</script>
+</body>
+</html>
