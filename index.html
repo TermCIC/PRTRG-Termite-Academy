@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRTRG Termite Academy</title>
+<meta name="description" content="Documents for the PRTRG Termite Academy at Chiang Mai University, 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap">
+<style>
+:root {
+  --paper: #ffffff;
+  --surface: #f6f8fa;
+  --line: #dde4ea;
+  --line-solid: #b9c6d2;
+  --ink: #0a0a0a;
+  --body: #26333d;
+  --muted: #5f7484;
+  --blue: #1165a4;
+  --blue-soft: #e3edf6;
+  --f-display: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  --f-body: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+  --pad: clamp(1rem, 4vw, 3rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1418;
+    --surface: #172028;
+    --line: #26323c;
+    --line-solid: #3a4a57;
+    --ink: #f2f5f7;
+    --body: #cdd6dd;
+    --muted: #8d9faf;
+    --blue: #6cb2e8;
+    --blue-soft: #16304a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--body);
+  font-family: var(--f-body); font-size: 0.95rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 52rem; margin: 0 auto; padding: clamp(2.5rem, 8vw, 5rem) var(--pad) 3rem; }
+.eyebrow {
+  font-family: var(--f-display); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--blue);
+}
+h1 {
+  font-family: var(--f-display); color: var(--ink); font-weight: 700;
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 2.9rem); line-height: 1.15;
+  margin: .4rem 0 .8rem; text-wrap: balance;
+}
+.lede { color: var(--muted); max-width: 60ch; margin: 0 0 2.5rem; }
+.docs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.doc {
+  position: relative; display: grid; gap: .3rem;
+  padding: 1.25rem 1.4rem; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px;
+  transition: border-color .15s, background .15s;
+}
+.doc:hover { border-color: var(--line-solid); background: var(--blue-soft); }
+.doc h2 { font-family: var(--f-display); font-size: 1.15rem; color: var(--ink); margin: 0; }
+.doc h2 a { color: inherit; text-decoration: none; }
+.doc h2 a::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.doc p { margin: 0; }
+.doc .pdf {
+  position: relative; z-index: 1; justify-self: start;
+  font-size: 0.813rem; font-weight: 600; color: var(--blue);
+}
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.813rem; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">PRTRG · Chiang Mai University · 2027</div>
+  <h1>PRTRG Termite Academy</h1>
+  <p class="lede">Planning documents and participant materials for the Termite Academy at Chiang Mai University.</p>
+
+  <ul class="docs">
+    <li class="doc">
+      <h2><a href="Termite_Academy_CMU_2027_Participant_Handbook.html">Participant Handbook</a></h2>
+      <p>Schedule, locations, lecturers and practical information for participants.</p>
+      <a class="pdf" href="Termite_Academy_CMU_2027_Participant_Handbook.pdf">PDF version</a>
+    </li>
+    <li class="doc">
+      <h2><a href="Termite_Academy_Plan_Presentation.html">Plan and Budget Presentation</a></h2>
+      <p>Overview of the program plan and budget.</p>
+      <a class="pdf" href="Termite_Academy_Plan_Presentation.pdf">PDF version</a>
+    </li>
+    <li class="doc">
+      <h2><a href="Termite_Academy_Cost_Worksheet.html">Cost Worksheet</a></h2>
+      <p>Itemised cost estimates for the academy.</p>
+      <a class="pdf" href="Termite_Academy_Cost_Worksheet.pdf">PDF version</a>
+    </li>
+    <li class="doc">
+      <h2><a href="Termite_Academy_Board_Paper_2026-09-04.html">Board Paper (4 Sep 2026)</a></h2>
+      <p>Proposal submitted to the board for review.</p>
+      <a class="pdf" href="Termite_Academy_Board_Paper_2026-09-04.pdf">PDF version</a>
+    </li>
+  </ul>
+
+  <footer>PRTRG Termite Academy</footer>
+</main>
+</body>
+</html>
