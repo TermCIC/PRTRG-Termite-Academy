@@ -1,0 +1,416 @@
+<title>Termite Academy Cost Worksheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+:root {
+  --paper:#ffffff; --surface:#f6f8fa; --surface-2:#eaeff4;
+  --line:#dde4ea; --line-solid:#b9c6d2; --ink:#0a0a0a; --body:#26333d; --muted:#5f7484;
+  --blue:#1165a4; --blue-deep:#0c4a7a; --blue-soft:#e3edf6;
+  --amber:#9a6a10; --amber-soft:#f6eddc; --green:#3f7539; --alert:#b20000; --alert-soft:#f9e6e4;
+  --f-display:'Montserrat','Segoe UI',system-ui,sans-serif;
+  --f-body:'Open Sans','Segoe UI',system-ui,sans-serif;
+  --step--2:.7rem; --step--1:.8rem; --step-0:.92rem; --step-1:1.1rem;
+  --step-2:1.35rem; --step-3:1.7rem; --step-4:clamp(1.9rem,1.4rem+2.2vw,2.7rem);
+  --measure:72ch; --pad:clamp(1.25rem,4vw,3rem);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--f-body);
+  font-size:var(--step-0);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);color:var(--ink);line-height:1.18;margin:0;font-weight:700;text-wrap:balance}
+p{margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:58rem;margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{font-family:var(--f-display);font-size:var(--step--2);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.meta-k{font-family:var(--f-display);font-size:.66rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.meta-v{font-family:var(--f-display);font-size:var(--step-0);font-weight:600;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+
+.masthead{border-top:6px solid var(--blue);border-bottom:1px solid var(--line)}
+.masthead-inner{max-width:58rem;margin:0 auto;padding:1.6rem var(--pad) 1.35rem;
+  display:flex;flex-direction:column;gap:.9rem}
+.masthead img{width:180px;max-width:55%;height:auto;display:block}
+.masthead h1{font-size:var(--step-4);letter-spacing:-.02em;max-width:20ch}
+.masthead h1 em{font-style:normal;display:block;color:var(--blue);font-weight:600}
+.meta-strip{display:flex;flex-wrap:wrap;gap:.2rem 2.25rem;border-top:2px solid var(--blue);
+  padding-top:.9rem;margin-top:.3rem}
+.meta-strip div{display:flex;flex-direction:column;padding-block:.28rem}
+
+section{padding-block:2rem;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.sec-head{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.15rem}
+.sec-head h2{font-size:var(--step-3);letter-spacing:-.015em}
+.sec-head p{color:var(--muted);max-width:var(--measure)}
+
+/* headcount basis */
+.basis{border:1px solid var(--line-solid);border-left:4px solid var(--blue);padding:1.05rem 1.2rem;
+  display:grid;gap:.9rem}
+.basis h3{font-size:var(--step-1)}
+.counts{display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));
+  background:var(--line);border:1px solid var(--line)}
+.counts>div{background:var(--paper);padding:.7rem .8rem;display:flex;flex-direction:column;gap:.15rem}
+.counts .n{font-family:var(--f-display);font-size:var(--step-2);font-weight:700;color:var(--blue);
+  font-variant-numeric:tabular-nums}
+
+/* cost group tables */
+.group{margin-bottom:1.75rem}
+.group:last-child{margin-bottom:0}
+.group-head{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:.55rem;margin-bottom:.15rem}
+.group-id{font-family:var(--f-display);font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  color:#fff;background:var(--blue);padding:.16rem .42rem;white-space:nowrap}
+.group-head h3{font-size:var(--step-1)}
+.group-head .est{margin-left:auto;font-family:var(--f-display);font-size:var(--step--1);
+  font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.group-note{font-size:var(--step--1);color:var(--muted);margin:.5rem 0 .7rem;max-width:var(--measure)}
+
+.table-scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:var(--step--1);min-width:34rem}
+th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--f-display);font-size:.63rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink);background:var(--surface-2);
+  border-bottom:1px solid var(--line-solid)}
+tbody tr:last-child td{border-bottom:1px solid var(--line-solid)}
+td .item{font-family:var(--f-display);font-weight:600;color:var(--ink);display:block;margin-bottom:.1rem}
+td .qty{color:var(--muted);font-size:var(--step--2)}
+th.fill,td.fill{background:var(--surface);border-left:1px solid var(--line)}
+td.fill{height:2.4rem}
+.col-item{width:38%}
+.col-ask{width:24%}
+.col-quote{width:16%}
+.col-src{width:22%}
+
+.swing{border-left:3px solid var(--amber);background:var(--amber-soft);padding:.55rem .75rem;
+  font-size:var(--step--2);margin-top:.6rem}
+.swing strong{font-family:var(--f-display);color:var(--ink)}
+
+.note{border:1px solid var(--line-solid);border-left:3px solid var(--amber);
+  padding:.85rem 1.05rem;font-size:var(--step--1);max-width:var(--measure);
+  display:flex;flex-direction:column;gap:.5rem}
+.note.warn{border-left-color:var(--alert)}
+.note.new{border-left-color:var(--blue)}
+.note strong{font-family:var(--f-display);color:var(--ink)}
+
+ul.tight{margin:0;padding-left:1.15rem;display:flex;flex-direction:column;gap:.28rem}
+ul.tight li{font-size:var(--step--1)}
+
+/* reconciliation */
+.recon table{min-width:28rem}
+.recon td.num,.recon th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;
+  font-family:var(--f-display);font-weight:600}
+.recon tfoot td,.recon tfoot th{border-top:2px solid var(--ink);border-bottom:0;
+  font-family:var(--f-display);font-weight:700;color:var(--ink);padding-top:.6rem}
+
+footer{background:var(--surface);border-top:2px solid var(--blue);padding-block:1.6rem}
+.colophon{font-size:var(--step--1);color:var(--muted);display:flex;flex-wrap:wrap;gap:.4rem 1.5rem}
+
+@media print{
+  :root{
+    --line:#b9c4ce;--line-solid:#8a99a6;--ink:#000;--body:#14191e;--muted:#3f4e5a;
+    --blue:#0d5387;--blue-soft:#fff;--surface:#fafbfc;--surface-2:#fff;
+    --amber:#6f4c07;--amber-soft:#fff;--green:#2b5427;--alert:#8f0000;
+    --step--2:7.2pt;--step--1:8.2pt;--step-0:9.4pt;--step-1:11pt;
+    --step-2:12.5pt;--step-3:14.5pt;--step-4:22pt;--pad:0;--measure:100%;
+  }
+  @page{size:A4;margin:14mm 13mm}
+  html,body{background:#fff}
+  body{font-size:var(--step-0);line-height:1.35}
+  p,li,td,th{orphans:3;widows:3}
+  .wrap,.masthead-inner{max-width:none}
+  .masthead-inner{padding-block:0 .9rem}
+  .basis,.note,.swing,.group-id,thead th,td.fill,th.fill{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .swing{background:#fff!important;border:0.75pt solid var(--line-solid);border-left:2.5pt solid var(--amber)}
+  td.fill,th.fill{background:#fff!important;border-left:0.75pt solid var(--line-solid)}
+  td.fill{height:2.1rem}
+  thead th{background:#fff!important;border-bottom:1pt solid var(--ink)}
+  .counts>div{background:#fff!important;border:0.5pt solid var(--line)}
+  .counts{gap:0;background:#fff;border:0}
+  section{padding-block:.9rem;border-bottom:0}
+  .sec-head{margin-bottom:.75rem;break-inside:avoid}
+  .sec-head,h2,h3,.group-head,.group-note{break-after:avoid}
+  .group-note{break-before:avoid}
+  tr,.group-head,.note,.basis,.swing{break-inside:avoid}
+  .group{break-inside:auto;margin-bottom:1.1rem}
+  thead{display:table-header-group}
+  .table-scroll{overflow:visible}
+  table{min-width:0}
+  #items{break-before:page}
+  #recon{break-before:page}
+  footer{break-before:avoid;break-inside:avoid;padding-block:.9rem 0;background:#fff!important}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <img src="data:image/png;base64,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" alt="PRTRG &mdash; Pacific Rim Termite Research Group" width="384" height="97">
+    <p class="eyebrow">Confirmation checklist &middot; for the calls</p>
+    <h1>1st PRTRG Termite Academy <em>What is still an assumption</em></h1>
+    <div class="meta-strip">
+      <div><span class="meta-k">Participants</span><span class="meta-v">40, of whom 25 students</span></div>
+      <div><span class="meta-k">On site</span><span class="meta-v">44 people</span></div>
+      <div><span class="meta-k">Core cost</span><span class="meta-v">THB 186,973</span></div>
+      <div><span class="meta-k">Fee</span><span class="meta-v">USD 200 proposed</span></div>
+      <div><span class="meta-k">Checked</span><span class="meta-v">_______________</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Where this stands</p>
+      <h2>The budget is built. Moving the field day to Pa Pae put more of it back into question.</h2>
+      <p>The core cost is now <strong>THB 186,973</strong> for 40 participants. Three lines came down since the kit forced the fee up: the farewell venue, helper wages, and a confirmed-free room. Most lines still come from published price lists. But Pa Pae added a venue charge nobody has quoted, and turned transport from a set of 5 km hops into a 1.5-hour run each way &mdash; so the share of the budget resting on an assumption has grown, not shrunk.</p>
+    </div>
+
+    <div class="basis">
+        <h3>Five lines nobody has confirmed</h3>
+      <div class="counts">
+        <div><span class="meta-k">Transport</span><span class="n">36,000</span><span class="qty">Priced as local runs. Day 2 is 14 hours and 3 hours on the road</span></div>
+        <div><span class="meta-k">Collecting kit</span><span class="n">28,600</span><span class="qty">Now covers printing and lab materials too; none of it quoted yet</span></div>
+        <div><span class="meta-k">King Service</span><span class="n">20,000</span><span class="qty">Assumes partnership. Commercial rate is 33,500&ndash;68,500</span></div>
+        <div><span class="meta-k">Mushroom RC</span><span class="n">10,000</span><span class="qty">Our own estimate, not a quotation from the centre</span></div>
+        <div><span class="meta-k">Suan Pak dinner</span><span class="n">11,440</span><span class="qty">New venue, new price, not yet confirmed with them</span></div>
+      </div>
+      <p style="font-size:var(--step--1)"><strong>That is THB 106,040 of a THB 166,940 subtotal, close to two-thirds.</strong> Venue is now confirmed free and helper wages are fixed at THB 7,200. Food, the light trap and the Galae dinner come from published or quoted rates and are unlikely to move much. <strong>Transport is still the line to worry about most</strong>, because it was priced for 5 km hops and Day 2 is nothing of the sort.</p>
+    </div>
+
+    
+  </div>
+</section>
+
+<section id="items">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The calls</p>
+      <h2>Who to ring, and what to ask</h2>
+      <p>Seven conversations settle the budget. The right-hand columns are deliberately blank.</p>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">1</span><h3>King Service &mdash; practical control training</h3><span class="est">Budgeted 20,000</span></div>
+      <p class="group-note"><strong>Chiang Mai branch: 053 325 711.</strong> Head office 02 320 4444, service@kingservice.co.th. <strong>Ask about partnership before asking for a price</strong> &mdash; the day puts their technicians in front of 40 regional professionals. Day 3 is now a whole day at the company and its sites, and <strong>they arrange the teaching</strong>. We ask for four things: the equipment explained, a short course on methods and precautions, outdoor injection, and the underground reticulation pipes uncovered so the pipe run can be seen.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Why it matters</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">Would you partner rather than invoice?</span><span class="qty">Named as a partner in the programme, handbook and certificates</span></td><td>Decides whether the line is 20,000 or 50,000</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Will you run the morning &mdash; equipment, then methods and precautions?</span><span class="qty">Your instructors, your material, about 09:00 to 11:00</span></td><td>The programme now depends on the company teaching it</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Can we see an underground reticulation pipe run, uncovered?</span><span class="qty">Not a diagram &mdash; the actual pipe in the ground</span></td><td>Specifically requested. Hard to see anywhere else</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Do you have a yard or training facility?</span><span class="qty">Somewhere the techniques can run as stations</span></td><td>Moving 40 people between houses eats the whole day</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">A current job with real termite damage to visit?</span><span class="qty">Inspection is the one thing that cannot be staged</span></td><td>The inspection component depends on it</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Pre-construction pipe: live site, or build a rig?</span><span class="qty">A rig could stay at CMU for future teaching</span></td><td>Turns an expense into a small capital item</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Householder compensation &mdash; what is customary?</span><span class="qty">40 visitors, drilling, chemicals</span></td><td>Not a cost to push onto a third party</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Do you supply PPE for 40 observers?</span></td><td>Otherwise it falls on the safety line</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Can chemical actually be injected with 40 present?</span></td><td>Changes the session from practical to demonstration</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="swing"><strong>Day 3 is now theirs to shape.</strong> The programme allows 09:00 to 15:00 at the company and its sites. Settle the format with them before quoting anything, and confirm they can host 44 people for a full day.</p>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">2</span><h3>Mushroom Research Center &mdash; the field day</h3><span class="est">Budgeted 10,000</span></div>
+      <p class="group-note">4P8H+X8X, 1095, Pa Pae, Mae Taeng District, Chiang Mai 50150. <strong>The THB 10,000 is our own figure, not theirs.</strong> The centre mentioned THB 20,000 when an overnight stay was assumed; the group now arrives at 10:00 and leaves at 20:00, so what is being hired is laboratory use by day and the grounds in the evening. That has never been priced by anyone at the centre.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Why it matters</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">What does day use actually cost?</span><span class="qty">Arrive 10:00, leave 20:00, no beds taken</span></td><td><strong>The single largest unknown in the budget</strong></td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Does the THB 20,000 you mentioned include beds we are not using?</span><span class="qty">The centre sleeps 20; the group is 44</span></td><td>Establishes whether 10,000 is realistic or wishful</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Permission to collect termites on the site</span><span class="qty">Mounds, soil, deadwood, leaf litter, fungus gardens</span></td><td>This is the whole reason for going</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Laboratory access for sorting and labelling</span><span class="qty">Benches, light, water, power</span></td><td>Part of what the 10,000 is meant to buy</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Mains power at the light-trap position, and may we run to 20:00?</span><span class="qty">Trap set from 16:00, flights around dusk</span></td><td>Otherwise a generator has to be hired</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Toilets, shade and drinking water for 44 across a full day</span></td><td>Fourteen hours away from any other facility</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Can you cater lunch and a field dinner for 44, or do we bring them?</span></td><td>Decides whether the food line covers it</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Road access &mdash; can four minibuses reach the site and turn?</span></td><td>A transfer on foot at the end changes the timings</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Wet-weather plan &mdash; is there indoor space for 44?</span><span class="qty">Early May is the start of the rains</span></td><td>There is no fallback two hours from base</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Does the centre work on <em>Termitomyces</em>?</span><span class="qty">Fungus-growing termites cultivate mushrooms</span></td><td>Would be a lecture nobody else in the region could give</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Kevin D. Hyde &mdash; research, specimen and publication terms</span><span class="qty">Agree before any sampling begins</span></td><td>Board decision D7 depends on this being settled in writing</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="swing"><strong>If day use comes back at THB 20,000, the core cost rises to THB 198,173.</strong> That would still leave USD 200 in front, but it eats most of the THB 17,027 cushion. Ask this one first.</p>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">3</span><h3>Mae Hia centre &mdash; rooms and catering</h3><span class="est">Rates published</span></div>
+      <p class="group-note">Faculty of Agriculture, 0-5394-4009. Book at agri.cmu.ac.th/maehia_ebooking. Rates are published and bookable, so this call is about availability and the block booking, not price. <strong>Mae Hia is now purely the base</strong> &mdash; all fieldwork moved to Pa Pae, so the sampling and light-trap questions have gone with it.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Why it matters</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">Availability on the final dates</span><span class="qty">34 beds in the air-conditioned block</span></td><td>25 students block-booked, 9 left for non-students</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Can we block-book 25 beds and hold them?</span></td><td>Students must not have to book for themselves</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Overflow beds if more than 9 non-students want rooms</span><span class="qty">Raunmai and research centre dormitories</span></td><td>THB 80&ndash;120 per person, cheaper than the main block</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Catering for 44 &mdash; confirm the rates hold</span><span class="qty">80 main, 60 breakfast, 35 break</span></td><td>The whole food line rests on these. Day 2 meals are at Pa Pae, not here</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Reception and gate hours &mdash; the group returns about 22:00 on Day 2</span><span class="qty">Fourteen hours out at Pa Pae</span></td><td>Forty-four people arriving to a locked gate</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Breakfast at 07:00 on Day 2, before an 08:00 departure</span></td><td>The standard service may start later</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Deposit and booking lead time</span></td><td>Feeds the payment timetable</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">4</span><h3>CMU &mdash; room, insurance, and the levy</h3><span class="est">Budgeted 5,000 + 9,900</span></div>
+      <p class="group-note">Two different offices. The department office made the free-room offer and can confirm it; the finance office holds the answer on the levy, and it is not the same conversation.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Who</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">Written confirmation of the free lecture room</span><span class="qty">Offered by message, conditional on crediting the department</span></td><td>Department office, then P&rsquo;Dang</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Does it include the laboratory for the microscope practical?</span><span class="qty">The offer said &ldquo;the room&rdquo;, singular</span></td><td>Department office</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">AV, technician, electricity, cleaning &mdash; charged separately?</span></td><td>Department office</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Exact official English name of the department</span><span class="qty">It must appear on every printed item</span></td><td>Department office</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Does CMU insurance cover visiting participants?</span><span class="qty">Including a full day off campus at a private site in Mae Taeng</span></td><td>Insurance or risk office</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Is there an overhead levy on collected fees?</span><span class="qty">Universities commonly take 5&ndash;15%</span></td><td><strong>Finance office</strong>, not the department</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Can CMU receive and hold the registration income?</span><span class="qty">Named account, receipting route</span></td><td>Finance office</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Microscopes and reference specimens on loan</span><span class="qty">The materials line assumes borrowing, not buying</span></td><td>Entomology laboratory</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="swing"><strong>Two answers here are worth about THB 10,000.</strong> If CMU insurance already covers visitors the safety line halves; if a levy applies it comes straight off the margin. Ask both before the board meeting.</p>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">5</span><h3>Transport and helpers</h3><span class="est">Budgeted 36,000 + 7,200</span></div>
+      <p class="group-note"><strong>Re-quote this from scratch.</strong> THB 3,000 a van per day was a fair rate when every journey was about 5 km. Day 2 now leaves at 08:00, drives 1.5 hours to Mae Taeng, waits all day, and returns at 22:00. That is a fourteen-hour engagement with three hours of driving, and no Chiang Mai operator will treat it as a local day.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Why it matters</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">Day 2 as a distinct job: 08:00&ndash;22:00, Chiang Mai to Pa Pae and back</span><span class="qty">Mae Taeng, about 1.5 hours each way</span></td><td><strong>The budget assumes a local rate for what is not a local day</strong></td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Days 1 and 3 at the local rate</span><span class="qty">Short campus and city runs only</span></td><td>These are the days the THB 3,000 rate actually fits</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">4 minibuses &mdash; confirm the seat count</span><span class="qty">44 people; 3 vans is only about 30 seats</span></td><td>Confirm fuel and tolls are included</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Driver overtime, meals and waiting time on Day 2</span><span class="qty">Drivers are on site the whole day</span></td><td>Get it in the quotation, not the invoice</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Night driving on the return &mdash; any surcharge or crew change?</span><span class="qty">Hill road, after dark, 44 passengers</span></td><td>Both a cost and a safety question</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Passenger insurance on the volunteer&rsquo;s car</span><span class="qty">It will be carrying invited international lecturers</span></td><td>A real liability question</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Helper payroll: 4 helpers, 3 days, THB 600 each per day</span><span class="qty">Salary only; total payroll THB 7,200 &mdash; the usual Thai student day rate</span></td><td>Record attendance and payment; meals are already in the 44-person food line</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Is THB 600 fair for a fourteen-hour Day 2?</span></td><td>Day 2 is roughly twice the length of Days 1 and 3; a top-up may be warranted</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Do the helpers need beds at Mae Hia?</span></td><td>Adds to the room block</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="swing"><strong>Still the biggest single risk.</strong> If Day 2 alone is quoted at double the local rate, transport goes from THB 36,000 to about THB 48,000 and the core cost passes THB 200,413 &mdash; comfortably inside the THB 17,027 cushion on its own, but not if the Mushroom Research Center quote also comes in high. Ask before the board meeting if there is time.</p>
+    </div>
+
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">6</span><h3>The two dinners</h3><span class="est">Budgeted 13,200 + 11,440</span></div>
+      <p class="group-note"><strong>Day 1, welcome dinner:</strong> Galae Restaurant or equivalent, 44 people at THB 300. <strong>Day 3, farewell party:</strong> Suan Pak Restaurant, 44 at THB 260. Ask both the same questions. Neither is confirmed with the venue itself, even though the price is now fixed in the budget.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Why it matters</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">Can you seat 44 as one group on the date?</span><span class="qty">Not split across separate tables in separate rooms</span></td><td>The point of the evening is that everyone meets</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">What does THB 300 &mdash; and THB 260 &mdash; a head actually buy at Suan Pak?</span><span class="qty">Set menu, number of dishes, whether drinks are included</span></td><td>Decides whether the budget figures are enough</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Suan Pak: can they hold the date and confirm THB 260 in writing?</span><span class="qty">The price moved with the venue change; get it fixed</span></td><td>The whole line rests on this one number</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">What time does dinner finish on Day 3?</span><span class="qty">Certificates end at 16:30; some fly out the next morning</span></td><td>A late finish on the last night is a real problem for travellers</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Vegetarian, halal and allergy options</span><span class="qty">Participants from across the Pacific Rim</span></td><td>Ask now; it cannot be fixed on the night</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Deposit, final numbers deadline, cancellation terms</span></td><td>Numbers will still be moving in April</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Parking or drop-off for four minibuses</span></td><td>The group arrives together</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Would a sponsor cover one or both evenings?</span><span class="qty">A named supporter, one line in the programme</span></td><td>Worth THB 24,640 together &mdash; the easiest thing to sponsor</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="group-id">7</span><h3>The collecting kit</h3><span class="est">Budgeted 28,600</span></div>
+      <p class="group-note"><strong>Required by the President: a complete set for every participant, to keep.</strong> Seven collecting items plus a share of printing, certificates and lab materials, at an estimated THB 650 a head, 44 sets. Nothing here has been quoted, and it is now the largest single line after transport. Take the whole list to one Chiang Mai laboratory supplier and ask for a bulk price.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th class="col-item">What to ask</th><th class="col-ask">Why it matters</th><th class="col-quote fill">Answer</th><th class="col-src fill">Date</th></tr></thead>
+          <tbody>
+            <tr><td><span class="item">Bulk price for all seven collecting items &times; 44</span><span class="qty">Forceps, vials, sample box, alcohol, labels, petri dishes &mdash; aspirator printed separately</span></td><td><strong>Most of the THB 28,600 rests on this one call</strong></td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Forceps &mdash; fine and soft-tipped, budgeted THB 120</span><span class="qty">Hard tips crush workers and ruin the specimen</span></td><td>The one item where quality actually matters</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Vials &mdash; 5 ml screw cap, alcohol-tight, budgeted THB 10 each</span><span class="qty">10 per person, 440 in total</span></td><td>Push caps leak in a bag</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Sample box with compartments, budgeted THB 90</span></td><td>Vials have to survive the road back from Pa Pae</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Ethanol in bulk &mdash; can we buy locally?</span><span class="qty">250 ml a head, about 11 litres; budgeted THB 60 each</span></td><td>Participants cannot fly home with it, so it is decanted on site</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Waterproof labels and markers, budgeted THB 50</span></td><td>Ordinary paper and ink dissolve in alcohol</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Petri dishes &times; 5, budgeted THB 60</span></td><td>For sorting under the microscope</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">CMU printer: filament cost and print time for 44 aspirators</span><span class="qty">About 30 g each; budgeted THB 100 with tubing, mesh and stopper</span></td><td>Marginal cost is almost nothing if the printer is free</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Does THB 70 a head cover printing, certificates and lab materials?</span><span class="qty">Folded in from what used to be two separate lines</span></td><td>Confirm it before those two lines are trusted to be gone</td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Print and test one aspirator before ordering anything</span><span class="qty">Assemble it and try it on live termites</span></td><td><strong>A design that fails in the field is worse than no kit</strong></td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Will a supplier sponsor the kit, in cash or in kind?</span><span class="qty">Their mark beside PRTRG&rsquo;s, on a tool that stays on a bench for years</span></td><td><strong>Worth THB 32,032 &mdash; the most valuable single ask in this document</strong></td><td class="fill"></td><td class="fill"></td></tr>
+            <tr><td><span class="item">Where does the PRTRG mark go &mdash; box, shirt, or both?</span></td><td>Decide before anything is printed or engraved</td><td class="fill"></td><td class="fill"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="swing"><strong>At USD 200 the margin is THB 17,027, and this line is THB 28,600.</strong> A 10% overrun costs about THB 3,200 &mdash; comfortably inside the cushion, but not free. Quote it before the board fixes the fee.</p>
+    </div>
+  </div>
+</section>
+
+<section id="recon">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">When the answers come back</p>
+      <h2>Reconcile against the fee</h2>
+      <p>Fill in the right-hand column, total it, and compare against income at USD 200 a head.</p>
+    </div>
+
+    <div class="recon table-scroll">
+      <table>
+        <thead><tr><th>Line</th><th class="num">Budgeted</th><th class="num fill">Confirmed</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Transport &mdash; Days 1 and 3 local, Day 2 to Pa Pae</th><td class="num">36,000</td><td class="fill"></td></tr>
+          <tr><th scope="row">Collecting kit, 44 sets at THB 650</th><td class="num">28,600</td><td class="fill"></td></tr>
+          <tr><th scope="row">Food during the programme, 44 people</th><td class="num">27,600</td><td class="fill"></td></tr>
+          <tr><th scope="row">Practical control training</th><td class="num">20,000</td><td class="fill"></td></tr>
+          <tr><th scope="row">Welcome dinner, Day 1, 44 at THB 300</th><td class="num">13,200</td><td class="fill"></td></tr>
+          <tr><th scope="row">Farewell party, Day 3, 44 at THB 260</th><td class="num">11,440</td><td class="fill"></td></tr>
+          <tr><th scope="row">Mushroom Research Center, day use</th><td class="num">10,000</td><td class="fill"></td></tr>
+          <tr><th scope="row">Safety, first aid and insurance</th><td class="num">9,900</td><td class="fill"></td></tr>
+          <tr><th scope="row">Helper wages, 4 &times; 3 days &times; THB 600</th><td class="num">7,200</td><td class="fill"></td></tr>
+          <tr><th scope="row">Light trap and night work</th><td class="num">3,000</td><td class="fill"></td></tr>
+          <tr><th scope="row">Venue and rooms</th><td class="num">0</td><td class="fill"></td></tr>
+          <tr><th scope="row">Subtotal</th><td class="num">166,940</td><td class="fill"></td></tr>
+          <tr><th scope="row">Contingency, 12%</th><td class="num">20,033</td><td class="fill"></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th scope="row">Core cost</th><td class="num">186,973</td><td class="fill"></td></tr>
+          <tr><th scope="row">Income, 40 &times; USD 200 at THB 34</th><td class="num">272,000</td><td class="fill"></td></tr>
+          <tr><th scope="row">Student grants, 25 &times; USD 80</th><td class="num">&minus;68,000</td><td class="fill"></td></tr>
+          <tr><th scope="row">Left over</th><td class="num">+17,027</td><td class="fill"></td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1.25rem">
+      <p><strong>There is THB 17,027 of room now, which changes what a bad answer can do.</strong> The Pa Pae day rate at THB 20,000 instead of 10,000 takes THB 11,200; a doubled Day 2 transport quote takes THB 13,440; a 10% overrun on the collecting kit takes about THB 3,200. Any one of these is survivable on its own. <strong>Two of them together are not</strong> &mdash; quote the Mushroom Research Center and the transport re-quote first, since those are the two large enough to matter.</p>
+    </div>
+
+    <div class="note" style="margin-top:1.25rem">
+      <p><strong>Accommodation is not in this table.</strong> It is booked and paid separately: THB 755 shared dormitory, THB 1,250 twin shared, THB 2,075 twin sole occupancy, for three nights with breakfasts at Mae Hia. Students&rsquo; rooms are block-booked for them; non-students choose. <strong>Nobody stays at Pa Pae</strong> &mdash; the centre sleeps 20 and the group is 44, which is why Day 2 is a day trip and there is no accommodation charge there. A student pays USD 200, receives USD 80 back at the close, and adds THB 755 for the dormitory: about THB 4,835 all in.</p>
+    </div>
+
+    <div class="note" style="margin-top:1rem">
+      <p><strong>What to do with the answers.</strong> Every figure that comes back low is margin; every figure that comes back high comes off it. If a line lands high, say so at the board meeting before the fee is fixed, not after. The fee is quoted in USD, so the baht conversion is a second exposure: a 5% move against us is worth about THB 13,600 &mdash; most of the margin, though no longer all of it.</p>
+    </div>
+
+    <div class="note warn" style="margin-top:1rem">
+      <p><strong>Not in this budget at all:</strong> lecturer airfares. Six lecturers at roughly THB 12,000&ndash;20,000 each is THB 72,000&ndash;120,000 &mdash; larger than transport, food and accommodation combined. If they are to be covered it must be from outside the registration income. Many lecturers can claim travel from their own institution; ask before assuming the Academy must pay.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="colophon">
+      <span>1st PRTRG Termite Academy &middot; Chiang Mai University</span>
+      <span>Confirmation checklist &mdash; internal planning use</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,592 @@
+<title>Termite Academy Board Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+:root {
+  --paper:      #ffffff;
+  --surface:    #f6f8fa;
+  --surface-2:  #eaeff4;
+  --line:       #dde4ea;
+  --line-solid: #b9c6d2;
+  --ink:        #0a0a0a;
+  --body:       #26333d;
+  --muted:      #5f7484;
+  --blue:       #1165a4;
+  --blue-deep:  #0c4a7a;
+  --blue-soft:  #e3edf6;
+  --amber:      #9a6a10;
+  --amber-soft: #f6eddc;
+  --green:      #3f7539;
+  --green-soft: #e4eee2;
+  --alert:      #b20000;
+  --alert-soft: #f9e6e4;
+
+  --f-display: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  --f-body: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+
+  --step--2: 0.72rem;
+  --step--1: 0.813rem;
+  --step-0:  0.95rem;
+  --step-1:  1.15rem;
+  --step-2:  1.4rem;
+  --step-3:  1.8rem;
+  --step-4:  clamp(2rem, 1.4rem + 2.4vw, 2.9rem);
+
+  --measure: 72ch;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0; background: var(--paper); color: var(--body);
+  font-family: var(--f-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--f-display); color: var(--ink); line-height: 1.18;
+  text-wrap: balance; margin: 0; font-weight: 700;
+}
+p { margin: 0; }
+a { color: var(--blue); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+.wrap { max-width: 58rem; margin: 0 auto; padding-inline: var(--pad); }
+.prose { max-width: var(--measure); display: flex; flex-direction: column; gap: .85rem; }
+
+.eyebrow {
+  font-family: var(--f-display); font-size: var(--step--2); font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--blue);
+}
+.meta-k {
+  font-family: var(--f-display); font-size: .68rem; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--muted);
+}
+.meta-v {
+  font-family: var(--f-display); font-size: var(--step-0); font-weight: 600;
+  color: var(--ink); font-variant-numeric: tabular-nums;
+}
+
+/* ---------- masthead ---------- */
+
+.masthead { border-top: 6px solid var(--blue); border-bottom: 1px solid var(--line); }
+.masthead-inner {
+  max-width: 58rem; margin: 0 auto; padding: 1.75rem var(--pad) 1.5rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.masthead img { width: 190px; max-width: 55%; height: auto; display: block; }
+.masthead h1 { font-size: var(--step-4); letter-spacing: -.02em; max-width: 22ch; }
+.masthead h1 em { font-style: normal; display: block; color: var(--blue); font-weight: 600; }
+.meta-strip {
+  display: flex; flex-wrap: wrap; gap: .25rem 2.25rem;
+  border-top: 2px solid var(--blue); padding-top: 1rem; margin-top: .35rem;
+}
+.meta-strip div { display: flex; flex-direction: column; padding-block: .3rem; }
+
+/* ---------- sections ---------- */
+
+section { padding-block: 2.25rem; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: 0; }
+.sec-head { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.5rem; }
+.sec-head h2 { font-size: var(--step-3); letter-spacing: -.015em; }
+.sec-head p { color: var(--muted); max-width: var(--measure); }
+
+/* ---------- decision cards ---------- */
+
+.decisions { display: flex; flex-direction: column; gap: 1rem; }
+.decision {
+  border: 1px solid var(--line-solid); border-left: 4px solid var(--blue);
+  padding: 1.1rem 1.25rem; display: grid; gap: .7rem;
+}
+.decision-head { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+.decision-id {
+  font-family: var(--f-display); font-size: .68rem; font-weight: 700;
+  letter-spacing: .1em; color: #fff; background: var(--blue);
+  padding: .18rem .45rem; white-space: nowrap;
+}
+.decision-head h3 { font-size: var(--step-1); }
+.decision dl { margin: 0; display: grid; gap: .5rem; }
+.decision dt {
+  font-family: var(--f-display); font-size: .66rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: .1rem;
+}
+.decision dd { margin: 0; font-size: var(--step--1); }
+.decision .rec dt { color: var(--green); }
+.decision .risk dt { color: var(--alert); }
+.decision.urgent { border-left-color: var(--alert); }
+.decision-id.alert { background: var(--alert); }
+
+/* ---------- tables ---------- */
+
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); min-width: 26rem; }
+caption { text-align: left; font-size: var(--step--1); color: var(--muted); padding-bottom: .55rem; }
+th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th {
+  font-family: var(--f-display); font-size: .66rem; font-weight: 700;
+  letter-spacing: .11em; text-transform: uppercase; color: var(--ink);
+  background: var(--surface-2); border-bottom: 1px solid var(--line-solid);
+}
+tbody tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.num { font-family: var(--f-display); font-weight: 600; color: var(--ink); }
+tbody th { font-weight: 600; color: var(--ink); }
+.short { color: var(--alert); }
+.ok { color: var(--green); }
+tr.pick td, tr.pick th { background: var(--blue-soft); }
+tr.pick td.num { color: var(--blue-deep); }
+
+/* ---------- status list ---------- */
+
+.status { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.status-row {
+  display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem;
+  padding: .75rem 0; border-bottom: 1px solid var(--line); align-items: baseline;
+}
+.status-row .what { font-family: var(--f-display); font-weight: 600; color: var(--ink); font-size: var(--step-0); }
+.status-row .detail { grid-column: 1 / -1; font-size: var(--step--1); color: var(--muted); }
+.tag {
+  font-family: var(--f-display); font-size: .62rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; padding: .18rem .45rem;
+  white-space: nowrap; border: 1px solid currentColor;
+}
+.tag.done { color: var(--green); }
+.tag.open { color: var(--amber); }
+.tag.board { color: var(--blue); }
+
+/* ---------- timeline ---------- */
+
+.timeline { display: grid; gap: 0; border-top: 2px solid var(--blue); }
+.tl {
+  display: grid; grid-template-columns: 12rem 1fr; gap: .3rem 1.25rem;
+  padding: .65rem 0; border-bottom: 1px solid var(--line);
+}
+.tl .when {
+  font-family: var(--f-display); font-weight: 700; color: var(--blue);
+  font-size: var(--step--1); font-variant-numeric: tabular-nums;
+}
+.tl .what { font-size: var(--step--1); }
+.tl.now { background: var(--blue-soft); padding-inline: .6rem; }
+@media (max-width: 34rem) { .tl { grid-template-columns: 1fr; } }
+
+/* ---------- callout ---------- */
+
+.note {
+  border: 1px solid var(--line-solid); border-left: 3px solid var(--amber);
+  padding: .85rem 1.05rem; font-size: var(--step--1); max-width: var(--measure);
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.note.warn { border-left-color: var(--alert); }
+.note.new { border-left-color: var(--blue); }
+.note strong { font-family: var(--f-display); color: var(--ink); }
+
+ul.tight { margin: 0; padding-left: 1.15rem; display: flex; flex-direction: column; gap: .3rem; }
+ul.tight li { font-size: var(--step--1); }
+
+footer {
+  background: var(--surface); border-top: 2px solid var(--blue);
+  padding-block: 1.75rem;
+}
+.colophon {
+  font-size: var(--step--1); color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: .4rem 1.5rem;
+}
+
+@media print {
+  :root {
+    --line: #b9c4ce; --line-solid: #8a99a6; --ink: #000; --body: #14191e;
+    --muted: #3f4e5a; --blue: #0d5387; --blue-soft: #fff; --surface: #fff;
+    --surface-2: #fff; --amber: #6f4c07; --green: #2b5427; --alert: #8f0000;
+    --step--2: 7.6pt; --step--1: 8.5pt; --step-0: 9.6pt;
+    --step-1: 11.5pt; --step-2: 13pt; --step-3: 15pt; --step-4: 23pt;
+    --pad: 0; --measure: 100%;
+  }
+  @page { size: A4; margin: 15mm 15mm 14mm; }
+  html, body { background: #fff; }
+  body { font-size: var(--step-0); line-height: 1.4; }
+  p, li, td, th { orphans: 3; widows: 3; }
+  .wrap, .masthead-inner { max-width: none; }
+  .decision, .note, tr.pick td, tr.pick th, thead th {
+    background: #fff !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  tr.pick td, tr.pick th { font-weight: 700; }
+  .tl.now { background: #fff !important; border-left: 3pt solid var(--blue); padding-left: .5rem; }
+  .decision-id { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .table-scroll { overflow: visible; }
+  table { min-width: 0; }
+  section { padding-block: 0.95rem; border-bottom: 0; }
+  .sec-head { margin-bottom: .9rem; }
+  .masthead-inner { padding-block: 0 1rem; }
+  .decision, .status-row, .tl, .note, figure { break-inside: avoid; }
+  /* A fee row split across a page break is unreadable - the number lands on one
+     page and its assessment on the next. */
+  tr { break-inside: avoid; }
+  thead { display: table-header-group; }
+  .table-scroll { break-inside: avoid; }
+  /* Keep an eyebrow with the heading it labels - splitting them leaves a bare
+     "02 - BASIS FOR D1" alone at the foot of the previous page. */
+  .sec-head { break-inside: avoid; }
+  .sec-head, h2, h3 { break-after: avoid; }
+  ul.tight, .status { break-inside: avoid; }
+  /* One exception: the core-cost table is too tall to hold whole, and doing so
+     strands most of a page. Rows and the repeating header keep it readable. */
+  .table-scroll.long { break-inside: auto; }
+  /* Only the lecturer report opens a page; forcing one before the timeline
+     stranded a single status row on a page of its own. */
+  #lecturers { break-before: page; }
+  footer { break-before: avoid; break-inside: avoid; padding-block: 1rem 0; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <img src="data:image/png;base64,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" alt="PRTRG — Pacific Rim Termite Research Group" width="384" height="97">
+    <p class="eyebrow">Board Paper · For decision</p>
+    <h1>1st PRTRG Termite Academy <em>Status and decisions requested</em></h1>
+    <div class="meta-strip">
+      <div><span class="meta-k">Board meeting</span><span class="meta-v">Fri 4 Sep 2026, 19:00</span></div>
+      <div><span class="meta-k">Reported by</span><span class="meta-v">Chun-I Chiu</span></div>
+      <div><span class="meta-k">Academy dates</span><span class="meta-v">4–6 May 2027</span></div>
+      <div><span class="meta-k">Venue</span><span class="meta-v">Chiang Mai University</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="ask">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 — The ask</p>
+      <h2>Five decisions are requested tonight</h2>
+      <p>Lecturers, programme and field plan are far enough advanced to proceed. What blocks the announcement is money and two partnership terms. The field day is at the Mushroom Research Center in Pa Pae, and the President has required a complete collecting kit for every participant. The core cost is <strong>THB 186,973</strong>. D1 asks the board to confirm <strong>USD 200</strong>, which covers it with real headroom. D3 asks the board to name the Department of Entomology and Plant Pathology, Chiang Mai University as co-organiser. D4 asks for a written Mushroom Research Center site and publication agreement before fieldwork. Registration and payment are being handled outside the board, by a dedicated webpage &mdash; see &sect;04.</p>
+    </div>
+
+    <div class="decisions">
+
+      <article class="decision">
+        <div class="decision-head"><span class="decision-id">D1</span><h3>Confirm the fee at USD 200</h3></div>
+        <dl>
+          <div><dt>What the fee has to cover</dt><dd>A core cost of <strong>THB 186,973</strong>, built from published or quoted rates wherever possible: transport, food, the collecting kit for every participant (which includes printing, certificates and lab materials), the training day, both dinners, safety cover, helper wages, and the Mushroom Research Center.</dd></div>
+          <div class="rec"><dt>Recommendation</dt><dd><strong>USD 200 from everyone, students and lecturers alike, excluding accommodation.</strong> At a full house this leaves <strong>THB 17,027</strong>, and stays positive down to 12 of the 15 non-student places &mdash; three can go unsold.</dd></div>
+          <div><dt>What a student pays</dt><dd>THB 6,800 on registration, less the THB 2,720 grant, plus THB 755 for three nights in a shared dormitory &mdash; <strong>about THB 4,835, roughly USD 142 all in</strong> &mdash; and they keep a collecting kit worth THB 650.</dd></div>
+          <div><dt>If the board wants more headroom</dt><dd>USD 220 leaves THB 44,227 and needs only 7 non-student places; USD 230 leaves THB 57,827 and needs 5.</dd></div>
+          <div class="risk"><dt>Two things the board should know</dt><dd>Each invited lecturer pays the full fee while teaching without honorarium and paying their own airfare and accommodation; the invitations must say so plainly and early. And the practical control training line of THB 20,000 assumes a company partners in exchange for being named &mdash; at full commercial rates that component is THB 33,500 to 68,500.</dd></div>
+        </dl>
+      </article>
+
+      <article class="decision">
+        <div class="decision-head"><span class="decision-id">D1b</span><h3>Approve the student grant</h3></div>
+        <dl>
+          <div class="rec"><dt>Recommendation</dt><dd><strong>USD 80 per student, 25 students, USD 2,000 in total &mdash; about THB 68,000.</strong> Paid to each student at the close of the Academy, as a participation grant.</dd></div>
+          <div><dt>Where the money comes from</dt><dd>Registration income covers it. At USD 200 a full house takes THB 272,000 against a core cost of THB 186,973, which leaves THB 85,027 &mdash; enough for the grants with THB 17,027 to spare. The society is not being asked for new money, but it is being asked to accept that the surplus is spoken for.</dd></div>
+          <div class="risk"><dt>Decide what happens if the Academy does not fill</dt><dd>This is the real question in D1b. At USD 200, four unsold non-student places put the Academy about THB 6,700 short; at 31 &mdash; the students and the lecturers alone &mdash; it is THB 25,650 short. The board should say now whether the shortfall falls on PRTRG, on sponsorship, or on the grant itself &mdash; deciding it in April, after students have been recruited on the promise, would be much worse.</dd></div>
+          <div><dt>Mechanism, and why the timing matters</dt><dd>Everyone is invoiced USD 200 and pays in full at registration. A PRTRG representative hands each of the 25 students USD 80 at the close of the Academy. Nothing is netted off up front, which keeps the accounting simple and the society&rsquo;s support visible. It also means <strong>PRTRG holds the whole THB 272,000 through the event and pays out only at the end</strong> &mdash; the money is in hand before it is spent &mdash; and <strong>a student who registers but does not attend never collects the grant.</strong></dd></div>
+        </dl>
+      </article>
+
+      <article class="decision">
+        <div class="decision-head"><span class="decision-id">D2</span><h3>Registration timetable and refund policy</h3></div>
+        <dl>
+          <div><dt>Decision needed</dt><dd>When registration opens and closes, and what happens if a participant withdraws or the Academy is cancelled.</dd></div>
+          <div class="rec"><dt>Recommendation</dt><dd>Registration opens <strong>October 2026</strong> and closes <strong>28 February 2027</strong>. Full refund if the Academy is cancelled by the organisers. For participant withdrawal: full refund before 31 March 2027, no refund after, because catering, transport, and accommodation are committed by then.</dd></div>
+          <div class="risk"><dt>What the board should know</dt><dd>The February deadline is set by visa processing, not by convenience. International participants need roughly six to eight weeks to obtain a Thai visa with an invitation letter, and the letters cannot be issued before payment is confirmed.</dd></div>
+        </dl>
+      </article>
+
+      <article class="decision">
+        <div class="decision-head"><span class="decision-id">D3</span><h3>Name the CMU department as co-organiser</h3></div>
+        <dl>
+          <div><dt>Decision needed</dt><dd>Whether the Academy should publicly credit the CMU academic partner as a joint organiser.</dd></div>
+          <div class="rec"><dt>Recommendation</dt><dd>Approve the wording: <strong>&ldquo;Jointly organised by the Pacific Rim Termite Research Group and the Department of Entomology and Plant Pathology, Chiang Mai University.&rdquo;</strong></dd></div>
+          <div><dt>Where it appears</dt><dd>The announcement, registration page, participant handbook, certificates, backdrop or banners, reports, and other official Academy materials.</dd></div>
+          <div><dt>Department head</dt><dd>Assoc. Prof. Dr. Ratchadawan Cheewangkoon, Head of the Department of Entomology and Plant Pathology, has agreed to give the Day 1 welcome &mdash; a working signal of the department&rsquo;s support, though not yet the written confirmation below.</dd></div>
+          <div class="risk"><dt>Before publication</dt><dd>Obtain written confirmation of the wording from Dr. Cheewangkoon as the department&rsquo;s authorised representative, and of the lecture-room, laboratory, audiovisual and local academic support included in the arrangement.</dd></div>
+        </dl>
+      </article>
+
+      <article class="decision">
+        <div class="decision-head"><span class="decision-id">D4</span><h3>Set the Mushroom Research Center research-output terms</h3></div>
+        <dl>
+          <div><dt>Decision needed</dt><dd>Whether the organisers may conclude a written agreement for use of this private field venue before any sampling begins.</dd></div>
+          <div><dt>The relationship is now more than a venue booking</dt><dd>Dr. Ishika Bera of the Center is a confirmed Day 1 lecturer, speaking on termite-mushroom diversity in Thailand &mdash; see §03. That gives the Center a direct stake in the Academy beyond hosting Day 2, which should make the terms below easier to agree.</dd></div>
+          <div class="rec"><dt>Recommendation</dt><dd>Kevin D. Hyde should be invited into the research design, interpretation and manuscript review for papers using Mushroom Research Center data or specimens. Where his documented contribution meets the target journal&rsquo;s authorship criteria, he is included as a co-author; otherwise Kevin D. Hyde and the Mushroom Research Center are acknowledged.</dd></div>
+          <div><dt>Put in writing</dt><dd>Site access, sampling permission, specimen and data custody, permitted research uses, publication review, expected contributions, and the process for deciding author order.</dd></div>
+          <div class="risk"><dt>Integrity safeguard</dt><dd>Access to a private venue is not, by itself, automatic authorship. Final authorship must reflect actual scholarly contribution and the policy of the journal receiving the paper.</dd></div>
+        </dl>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="money">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 &mdash; Basis for D1</p>
+      <h2>What the fee has to carry, and at what headcount</h2>
+      <p>Forty participants pay; four helpers do not. Forty-four people are fed, carried and equipped. USD figures throughout are converted at THB 34 = USD 1.</p>
+    </div>
+
+    <div class="table-scroll long">
+      <table>
+        <caption>Core costs carried by the registration fee</caption>
+        <thead><tr><th scope="col">Line</th><th scope="col" class="num">Cost, THB</th><th scope="col" class="num">Per payer, THB</th><th scope="col" class="num">Per payer, USD</th><th scope="col">Note</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Transport</th><td class="num">36,000</td><td class="num">900</td><td class="num">26</td><td>Four minibuses for three days. Needs re-quoting: Pa Pae is 1.5 hours each way</td></tr>
+          <tr><th scope="row">Collecting kit</th><td class="num">28,600</td><td class="num">715</td><td class="num">21</td><td>44 sets at THB 650, including printing, certificates and lab materials</td></tr>
+          <tr><th scope="row">Food during the programme</th><td class="num">27,600</td><td class="num">690</td><td class="num">20</td><td>3 lunches, the Pa Pae field dinner, 8 coffee services and water</td></tr>
+          <tr><th scope="row">Practical control training</th><td class="num">20,000</td><td class="num">500</td><td class="num">15</td><td>Assumes a company partners rather than invoices</td></tr>
+          <tr><th scope="row">Welcome dinner, Day 1</th><td class="num">13,200</td><td class="num">330</td><td class="num">10</td><td>Galae Restaurant, 44 at THB 300</td></tr>
+          <tr><th scope="row">Farewell party, Day 3</th><td class="num">11,440</td><td class="num">286</td><td class="num">8</td><td>Suan Pak Restaurant, 44 at THB 260</td></tr>
+          <tr><th scope="row">Mushroom Research Center</th><td class="num">10,000</td><td class="num">250</td><td class="num">7</td><td>Laboratory by day, grounds in the evening. Our estimate, not their quote</td></tr>
+          <tr><th scope="row">Safety, first aid and insurance</th><td class="num">9,900</td><td class="num">248</td><td class="num">7</td><td>Group cover for 44</td></tr>
+          <tr><th scope="row">Helper wages</th><td class="num">7,200</td><td class="num">180</td><td class="num">5</td><td>4 helpers &times; 3 days &times; THB 600 &mdash; the usual Thai student day rate</td></tr>
+          <tr><th scope="row">Light trap and night work</th><td class="num">3,000</td><td class="num">75</td><td class="num">2</td><td>Mains power on site at Pa Pae</td></tr>
+          <tr><th scope="row">Venue and rooms</th><td class="num">0</td><td class="num">0</td><td class="num">0</td><td>Confirmed free, arranged directly with CMU</td></tr>
+          <tr><th scope="row">Subtotal</th><td class="num">166,940</td><td class="num">4,174</td><td class="num">123</td><td></td></tr>
+          <tr><th scope="row">Contingency, 12%</th><td class="num">20,033</td><td class="num">501</td><td class="num">15</td><td></td></tr>
+          <tr class="pick"><th scope="row">Core cost</th><td class="num">186,973</td><td class="num">4,674</td><td class="num">137</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-scroll" style="margin-top:1.5rem">
+      <table>
+        <caption>The three rates, at a full house of 40</caption>
+        <thead><tr><th scope="col">&nbsp;</th><th scope="col" class="num">USD 200</th><th scope="col" class="num">USD 220</th><th scope="col" class="num">USD 230</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Registration income</th><td class="num">272,000</td><td class="num">299,200</td><td class="num">312,800</td></tr>
+          <tr><th scope="row">Core cost</th><td class="num">&minus;186,973</td><td class="num">&minus;186,973</td><td class="num">&minus;186,973</td></tr>
+          <tr><th scope="row">25 grants of USD 80</th><td class="num">&minus;68,000</td><td class="num">&minus;68,000</td><td class="num">&minus;68,000</td></tr>
+          <tr class="pick"><th scope="row">Left over</th><td class="num ok">+17,027</td><td class="num ok">+44,227</td><td class="num ok">+57,827</td></tr>
+          <tr><th scope="row">Non-student places needed, of 15</th><td class="num">12</td><td class="num ok">7</td><td class="num ok">5</td></tr>
+          <tr><th scope="row">What a student pays, all in</th><td class="num">4,835</td><td class="num">5,515</td><td class="num">5,855</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-scroll" style="margin-top:1.5rem">
+      <table>
+        <caption>If the Academy does not fill, at USD 200</caption>
+        <thead><tr><th scope="col">Who comes</th><th scope="col" class="num">Payers</th><th scope="col" class="num">Position</th></tr></thead>
+        <tbody>
+          <tr class="pick"><th scope="row">Full &mdash; 25 students, 15 others</th><td class="num">40</td><td class="num ok">+17,027</td></tr>
+          <tr><th scope="row">25 students, 10 others</th><td class="num">35</td><td class="num short">&minus;6,684</td></tr>
+          <tr><th scope="row">Students and lecturers only</th><td class="num">31</td><td class="num short">&minus;25,654</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1.5rem">
+      <p><strong>USD 200 has real headroom, but the intake still has to be substantially non-student.</strong> Only 12 of the 15 non-student places need to sell for the Academy to pay for itself. A student nets the Academy about THB 2,243 after the grant and their own meals, dinners and kit; a non-student nets about THB 4,963. Both are positive now &mdash; the difference is scale, not sign.</p>
+    </div>
+
+    <div class="table-scroll" style="margin-top:1.5rem">
+      <table>
+        <caption>If the board wants more headroom than USD 200 gives</caption>
+        <thead><tr><th scope="col">Action</th><th scope="col" class="num">Adds</th><th scope="col">Cost of doing it</th></tr></thead>
+        <tbody>
+          <tr class="pick"><th scope="row">A supplier sponsors the collecting kit</th><td class="num ok">+32,032</td><td>Their mark beside PRTRG&rsquo;s on a tool that stays on a bench for years. Costs the Academy nothing</td></tr>
+          <tr><th scope="row">Charge USD 230 instead</th><td class="num ok">+40,800</td><td>Everyone pays THB 1,020 more</td></tr>
+          <tr><th scope="row">Charge USD 220 instead</th><td class="num ok">+27,200</td><td>Everyone pays THB 680 more</td></tr>
+          <tr><th scope="row">Drop the farewell party</th><td class="num ok">+12,813</td><td>Loses the last evening together</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note new" style="margin-top:1.5rem">
+      <p><strong>None of these is urgent this time.</strong> USD 200 already covers the Academy with a genuine cushion. Sponsorship of the kit remains the best value in the document &mdash; it costs nobody anything &mdash; but the board can also simply bank the current margin and revisit the rate only if recruitment falls short.</p>
+    </div>
+
+    <div class="table-scroll" style="margin-top:1.5rem">
+      <table>
+        <caption>Accommodation &mdash; booked separately, three nights at Mae Hia with breakfasts</caption>
+        <thead><tr><th scope="col">Room</th><th scope="col" class="num">Cost</th><th scope="col">Who books it</th><th scope="col" class="num">Student pays, all in at USD 200</th></tr></thead>
+        <tbody>
+          <tr class="pick"><th scope="row">Dormitory, shared</th><td class="num">755</td><td>The 25 students &mdash; booked for them as a block</td><td class="num">4,835</td></tr>
+          <tr><th scope="row">Twin, shared between two</th><td class="num">1,250</td><td>Non-students, if they ask the organisers</td><td class="num">&mdash;</td></tr>
+          <tr><th scope="row">Twin, sole occupancy</th><td class="num">2,075</td><td>Non-students, or they book their own</td><td class="num">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1.5rem">
+      <p><strong>Students do not have to arrange anything.</strong> Their rooms are booked as a block, which removes a real barrier for a student travelling internationally for the first time. Non-students are trusted to sort themselves out, and may book their own if they would rather stay in the city.</p>
+    </div>
+  </div>
+</section>
+
+<section id="lecturers">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 — Reporting item</p>
+      <h2>Lecturers</h2>
+      <p>Five confirmed, covering evolution and genomics, toxicology and green control, urban entomology and control, local taxonomy, and termite-mushroom diversity. All seven Day 1 sessions now have a named speaker.</p>
+    </div>
+
+    <div class="status">
+      <div class="status-row">
+        <span class="what">Prof. Thomas Bourguignon — OIST, Japan</span>
+        <span class="tag done">Confirmed</span>
+        <span class="detail">Termite ecology, evolution, diversity, and termite–microbe research. Day 1 Lecture 2.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Prof. Dayu Zhang — Zhejiang A&amp;F University, China</span>
+        <span class="tag done">Confirmed</span>
+        <span class="detail">Management principles, green control, insecticide resistance, environmental toxicology. Day 3 Lecture 5.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Dist. Prof. Hou-Feng Li — NCHU, Taiwan</span>
+        <span class="tag done">Confirmed</span>
+        <span class="detail">Urban termite problems, inspection, monitoring, control. Day 1 Lecture 3 and Day 3 Lecture 6.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Asst. Prof. Dr. Chun-I Chiu — Chiang Mai University</span>
+        <span class="tag done">Confirmed</span>
+        <span class="detail">Local termite taxonomy and identification — the content gap the programme previously flagged. Day 1 Lecture 6, and runs the Day 2 identification class at Pa Pae.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Dr. Ishika Bera — Mushroom Research Center</span>
+        <span class="tag done">Confirmed</span>
+        <span class="detail">Diversity of termite-associated mushrooms in Thailand. Day 1 Lecture 7. Also a substantive link between PRTRG and the Center hosting Day 2, beyond the venue relationship in D4.</span>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:1.25rem">
+      <p><strong>No board decision required</strong>, but the board may wish to note that all lecturers pay the full USD 200 registration fee, receive no honorarium, and pay their own travel and accommodation. This applies to Dr. Chiu and Dr. Bera as well.</p>
+    </div>
+  </div>
+</section>
+
+<section id="programme">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 — Reporting item</p>
+      <h2>Programme and registration model</h2>
+    </div>
+
+    <div class="status">
+      <div class="status-row">
+        <span class="what">Three-day programme, hour by hour</span>
+        <span class="tag done">Drafted</span>
+        <span class="detail"><strong>CMU Faculty of Agriculture hosts Day 1 and the Day 3 closing; transport otherwise runs direct, with no stop there.</strong> Day 1 is seven 45-minute lecture sessions &mdash; shortened and multiplied at the President&rsquo;s request, all seven now named &mdash; closing with a 15-minute Day 2 briefing and the welcome dinner at Galae Restaurant, after which minibuses take everyone to Mae Hia for the first time. Day 2 is the Pa Pae field day: depart 08:00, survey, then at 15:00 the whole group takes the collecting and identification class while the helpers set the light trap, everyone together at the trap for dusk, back about 21:30. <strong>Nobody stays overnight at Pa Pae: the centre sleeps 20 and the group is 44.</strong> Day 3 is run by the pest control company &mdash; equipment, a short course on methods and precautions, outdoor injection and the underground reticulation pipes exposed &mdash; then certificates at CMU and the farewell party.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Participant model</span>
+        <span class="tag done">Drafted</span>
+        <span class="detail">40 participants: 25 students and 15 non-students &mdash; invited lecturers, pest management professionals, and visiting academics &mdash; plus 4 organising helpers, paid THB 600 per person per day, who are a cost rather than payers. Students&rsquo; rooms are booked for them as a block; non-students book their own or ask the organisers. Whether everyone pays the same fee is D1.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Participant handbook</span>
+        <span class="tag done">Drafted</span>
+        <span class="detail">Programme, lecturers, field sites, kit list, safety rules, and fee information. Ready to publish once D1, D1b and D2 to D4 are settled; the fee field is currently blank. The handbook still has to be reissued for the Pa Pae day trip, the new session structure and the farewell party.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Field permissions and accommodation</span>
+        <span class="tag open">In progress</span>
+        <span class="detail">The Department of Entomology and Plant Pathology, Chiang Mai University is proposed as co-organiser, subject to written confirmation of rooms and support. Mushroom Research Center access, sampling, specimen/data custody and publication terms also require a written agreement, and the THB 10,000 charge for laboratory use and evening hire of the grounds is the organisers&rsquo; working estimate, not yet a quotation from the centre. Which company runs Day 3 is not yet settled &mdash; King Service is one option, not a decision &mdash; and Mae Hia accommodation also remains to be confirmed.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Registration and payment webpage</span>
+        <span class="tag open">In progress</span>
+        <span class="detail">Hor Kok Pheng has agreed to build and run a dedicated webpage that takes an applicant&rsquo;s registration details and their payment &mdash; by credit card, Visa included &mdash; in one step. This replaces a bank-transfer process entirely: no wire charges, no proof-of-payment step, and confirmation is immediate. Not a board decision; reported here so the arrangement is on record.</span>
+      </div>
+      <div class="status-row">
+        <span class="what">Registration fee</span>
+        <span class="tag board">For board</span>
+        <span class="detail">Blocked on D1 and D1b. Once the rate is set, Hor Kok Pheng&rsquo;s page can go live and the announcement can go out.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">05 — Why tonight matters</p>
+      <h2>The critical path to 4 May 2027</h2>
+      <p>Eight months remain. Roughly four of them are the recruitment window, and that window cannot open until the fee is set.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl now">
+        <span class="when">4 Sep 2026 — tonight</span>
+        <span class="what">Board approves the fee, the student grant, the registration timetable, CMU co-organiser credit, and the Mushroom Research Center agreement mandate.</span>
+      </div>
+      <div class="tl">
+        <span class="when">Sep – Oct 2026</span>
+        <span class="what">CMU account and receipting route arranged. Announcement and handbook published.</span>
+      </div>
+      <div class="tl">
+        <span class="when">Oct 2026</span>
+        <span class="what">Registration opens. Promotion through PRTRG members, member institutions, and regional entomological societies.</span>
+      </div>
+      <div class="tl">
+        <span class="when">Nov 2026 – Feb 2027</span>
+        <span class="what">Recruitment window, approximately four months, to fill 40 places &mdash; 25 students and 15 others. The 15 non-student places carry the margin.</span>
+      </div>
+      <div class="tl">
+        <span class="when">28 Feb 2027</span>
+        <span class="what">Registration closes. Deadline set by visa processing time, not by preference.</span>
+      </div>
+      <div class="tl">
+        <span class="when">Mar 2027</span>
+        <span class="what">Participants confirmed, visa invitation letters issued, field permissions finalised.</span>
+      </div>
+      <div class="tl">
+        <span class="when">Apr 2027</span>
+        <span class="what">Accommodation, transport, catering, and equipment committed. Refund window closes 31 March.</span>
+      </div>
+      <div class="tl">
+        <span class="when">4–6 May 2027</span>
+        <span class="what">1st PRTRG Termite Academy, Chiang Mai University.</span>
+      </div>
+    </div>
+
+    <div class="note warn" style="margin-top:1.25rem">
+      <p><strong>Cost of deferral.</strong> If the fee decision moves to the next board meeting, the announcement slips with it and the recruitment window shrinks from roughly four months to less than three. For an international training activity where participants must arrange funding, leave, and visas, that is the difference between filling 40 places and filling only 31 &mdash; worth about THB 42,681 to the society.</p>
+    </div>
+  </div>
+</section>
+
+<section id="open">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">06 — For information</p>
+      <h2>Open items not requiring a board decision</h2>
+      <p>Carried by the organisers, listed so that nothing is assumed settled.</p>
+    </div>
+    <ul class="tight">
+      <li>Written confirmation of the CMU co-organiser wording, authorised representative, rooms and support</li>
+      <li>Local organising chair at CMU to be formally named</li>
+      <li>Written Mushroom Research Center access, sampling, specimen/data and publication agreement</li>
+      <li>Lecture room and laboratory room booking at CMU</li>
+      <li>Meals, water, shade and toilet facilities at Pa Pae for 44 people across a fourteen-hour day</li>
+      <li>Transport re-quote for the Pa Pae run &mdash; 1.5 hours each way, and a 22:00 return</li>
+      <li>Whether CMU applies an overhead levy to fees it collects</li>
+      <li>Light-trap power supply at Pa Pae: mains, battery, or generator</li>
+      <li>House termite control demonstration site and property-owner permission</li>
+      <li>Whether pesticide may be injected live during the demonstration, and university chemical safety approval</li>
+      <li>Certificate wording and issuing authority</li>
+      <li>Sponsors and any additional funding sources</li>
+      <li>Official contact person and programme email address for the announcement</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="colophon">
+      <span>1st PRTRG Termite Academy · 4–6 May 2027 · Chiang Mai University</span>
+      <span>Board paper for the PRTRG board meeting of 4 September 2026</span>
+    </div>
+  </div>
+</footer>
