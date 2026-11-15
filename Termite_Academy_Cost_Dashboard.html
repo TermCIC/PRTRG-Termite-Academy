@@ -60,7 +60,7 @@ button:hover { border-color: var(--muted); }
 .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 1rem 1.1rem; min-width: 0; }
 .grid { display: grid; gap: 1rem; }
 .top-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-@media (max-width: 860px) { .top-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .top-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* Inputs */
 .inputs { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem .9rem; margin-top: .8rem; }
@@ -138,7 +138,7 @@ tfoot tr.total td { border-top: 1px solid var(--axis); }
       <label>THB per USD <input type="number" id="fx" min="1" step="0.5"></label>
       <label>Students <input type="number" id="students" min="0" step="1"></label>
       <label>Non-students <input type="number" id="nonstudents" min="0" step="1"></label>
-      <label>Helpers (unpaid places) <input type="number" id="helpers" min="0" step="1"></label>
+      <label>Helpers (pay no fee) <input type="number" id="helpers" min="0" step="1"></label>
       <label>Student grant, USD <input type="number" id="grant" min="0" step="5"></label>
       <label>Contingency, % <input type="number" id="contingency" min="0" step="1"></label>
       <label>Student dorm, THB <input type="number" id="dorm" min="0" step="5"></label>
@@ -455,7 +455,7 @@ tfoot tr.total td { border-top: 1px solid var(--axis); }
     var parts = [
       { k: 'Costs', v: r.sub, c: 'var(--s1)' },
       { k: 'Student grants', v: r.grants, c: 'var(--s2)' },
-      { k: 'Contingency', v: Math.max(0, Math.min(r.cont, r.left)), c: 'var(--s3)' },
+      { k: 'Contingency reserve', v: Math.max(0, Math.min(r.cont, r.left)), c: 'var(--s3)' },
       { k: 'Left over', v: Math.max(0, r.leftAfter), c: 'var(--s4)', dark: true }
     ];
     var whole = Math.max(r.income, r.sub + r.grants);
