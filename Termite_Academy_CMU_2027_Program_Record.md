@@ -185,6 +185,18 @@ If trainee registration must also cover additional hotel nights before or after 
 | Professor Dayu Zhang / Zhang Dayu | Professor, Zhejiang A&F University | Green control of plant pests, insecticide resistance and environmental toxicology, insect genomics, insect industrialization, and termite research/control | Invited as one of the lecturers |
 | Distinguished Professor Hou-Feng Li | Distinguished Professor, Department of Entomology, National Chung Hsing University | Urban entomology, termite biology, termite control, forest entomology, and research methods | Invited as one of the lecturers |
 
+## Day 3 Trainer Changed to NPMA, 15 November 2026
+
+**Decision.** Suchart King Service is dropped as the Day 3 trainer. The organiser judged that the company could not provide teaching resources at the level the four-technique practical (inspection, pre-construction pipe reticulation, post-construction injection, baiting) needs. The Day 3 training is now being sought from the **Northern Pest Management Association (สมาคมกำจัดแมลงภาคเหนือ, NPMA)**.
+
+**Contact.** Through Preamyuda, who offered to coordinate. NPMA's own next regular training is expected around June 2027, so the Academy needs a special training. NPMA asked for a request letter stating number of participants, preferred month and topic. The NPMA website's contact email and phone are template placeholders and should not be used.
+
+**Request sent.** Letter dated 15 November 2026 (Thai, with English translation): one day, May 2027, tentatively Thursday 6 May; about 40 participants; morning classroom session with demonstrations, afternoon field practice on the four techniques in rotating groups. It asks for an itemised quotation (trainers, equipment, materials and chemicals, field-site charges), whether NPMA provides PPE and the practice site, and whether trainers can teach in English. Reply requested by 15 December 2026. The letter PDF is kept locally and excluded from the public repository.
+
+**Status.** Waiting for NPMA's quotation. Until it arrives, the Day 3 training line in the budget remains an assumption.
+
+**Still to update once NPMA confirms.** The Participant Handbook, Board Paper, Plan Presentation and Cost Worksheet still name Suchart King Service for Day 3.
+
 ## PRTRG Board Meeting, 4 September 2026
 
 ### Instruction from the President
@@ -2183,4 +2195,4 @@ Revised 30 August 2026: the whole day takes place at Sri Bua Ban campus. Minibus
 5. Decide whether industry partners will demonstrate tools on Day 3.
 6. Decide the number of participants per field group.
 7. Decide whether meals are included in the registration fee.
-8. Confirm Suchart King Service and the house termite control field site for baiting and pesticide injection demonstration.
+8. Confirm NPMA (replacing Suchart King Service, 15 November 2026) as the Day 3 trainer, with its quotation, field site, PPE and teaching language.
