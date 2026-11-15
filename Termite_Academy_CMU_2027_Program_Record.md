@@ -185,6 +185,17 @@ If trainee registration must also cover additional hotel nights before or after 
 | Professor Dayu Zhang / Zhang Dayu | Professor, Zhejiang A&F University | Green control of plant pests, insecticide resistance and environmental toxicology, insect genomics, insect industrialization, and termite research/control | Invited as one of the lecturers |
 | Distinguished Professor Hou-Feng Li | Distinguished Professor, Department of Entomology, National Chung Hsing University | Urban entomology, termite biology, termite control, forest entomology, and research methods | Invited as one of the lecturers |
 
+## Mushroom Research Center Request Sent to Kevin D. Hyde, 15 November 2026
+
+Email sent to Dr. Kevin D. Hyde asking to use the Mushroom Research Center on Wednesday 5 May 2027:
+
+- Day visit for about 44 people, no overnight stay
+- Activities: digging soil, splitting deadwood and termite mounds, evening light trapping
+- Any discoveries will be published with Kevin D. Hyde as co-author
+- Offer: name the Mushroom Research Center as co-organiser, alongside PRTRG and the Department of Entomology and Plant Pathology, Faculty of Agriculture, CMU, in exchange for free use of the site
+
+Status: waiting for reply. The dashboard carries THB 10,000 for this line until then.
+
 ## Day 3 Trainer Changed to NPMA, 15 November 2026
 
 **Decision.** Suchart King Service is dropped as the Day 3 trainer. The organiser judged that the company could not provide teaching resources at the level the four-technique practical (inspection, pre-construction pipe reticulation, post-construction injection, baiting) needs. The Day 3 training is now being sought from the **Northern Pest Management Association (สมาคมกำจัดแมลงภาคเหนือ, NPMA)**.
