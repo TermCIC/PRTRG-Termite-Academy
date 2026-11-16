@@ -194,7 +194,7 @@ Email sent to Dr. Kevin D. Hyde asking to use the Mushroom Research Center on We
 - Any discoveries will be published with Kevin D. Hyde as co-author
 - Offer: name the Mushroom Research Center as co-organiser, alongside PRTRG and the Department of Entomology and Plant Pathology, Faculty of Agriculture, CMU, in exchange for free use of the site
 
-Status: waiting for reply. The dashboard carries THB 10,000 for this line until then.
+**Reply, 16 November 2026.** Kevin D. Hyde agreed ("Yes, it is ok") and asked that arrangements go through Snack (Rawisara Ano, <anorawisara@gmail.com>); Ishika Bera copied. The Mushroom Research Center is a co-organiser and the site is free. Dashboard line set to THB 0.
 
 ## Day 3 Trainer Changed to NPMA, 15 November 2026
 
