@@ -196,6 +196,10 @@ Email sent to Dr. Kevin D. Hyde asking to use the Mushroom Research Center on We
 
 **Reply, 16 November 2026.** Kevin D. Hyde agreed ("Yes, it is ok") and asked that arrangements go through Snack (Rawisara Ano, <anorawisara@gmail.com>); Ishika Bera copied. The Mushroom Research Center is a co-organiser and the site is free. Dashboard line set to THB 0.
 
+## Day 3 Format and Budget, 23 November 2026
+
+Discussed with NPMA. Day 3 has three parts: a visit to a large Chiang Mai PCO company (Rentokil or Unipest), an equipment class, and an outdoor field observation. One company is enough for the indoor parts; the outdoor observation can be with a different company. Day 3 budget set at THB 30,000. Discussion page: Termite_Academy_NPMA_Discussion.html.
+
 ## Day 3 Trainer Changed to NPMA, 15 November 2026
 
 **Decision.** Suchart King Service is dropped as the Day 3 trainer. The organiser judged that the company could not provide teaching resources at the level the four-technique practical (inspection, pre-construction pipe reticulation, post-construction injection, baiting) needs. The Day 3 training is now being sought from the **Northern Pest Management Association (สมาคมกำจัดแมลงภาคเหนือ, NPMA)**.
