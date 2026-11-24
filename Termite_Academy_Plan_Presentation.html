@@ -100,6 +100,7 @@ thead th{font-family:var(--f-display);font-size:.64rem;font-weight:700;letter-sp
   text-transform:uppercase;color:var(--ink);background:var(--surface-2)}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td.n{font-family:var(--f-display);font-weight:600;color:var(--ink)}
+table.budget{font-size:.78rem}table.budget th,table.budget td{padding:.28rem .5rem}table.budget td:first-child{white-space:nowrap}
 tr.total td,tr.total th{border-top:2px solid var(--ink);border-bottom:0;
   font-family:var(--f-display);font-weight:700;color:var(--ink);padding-top:.55rem}
 tr.pick td,tr.pick th{background:var(--blue-soft)}
@@ -162,7 +163,7 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
     <div><span class="mk">Base</span><span class="mv">Mae Hia, Chiang Mai</span></div>
     <div><span class="mk">Participants</span><span class="mv">40</span></div>
     <div><span class="mk">Of whom students</span><span class="mv">25</span></div>
-    <div><span class="mk">Core cost</span><span class="mv">THB 186,973</span></div>
+    <div><span class="mk">Core cost</span><span class="mv">THB 201,757</span></div>
   </div>
   <div class="foot"><span>Working plan as at 30 August 2026 — figures still being confirmed</span></div>
 </section>
@@ -560,12 +561,13 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
   <h2 class="tight">Budget</h2>
   <div class="body">
     <div class="table-scroll">
-    <table>
+    <table class="budget">
       <thead><tr><th>Cost line</th><th class="n">Total THB</th><th class="n">Total USD</th><th class="n">Per participant &divide; 40</th><th>Basis</th></tr></thead>
       <tbody>
         <tr><td>Transport</td><td class="n">36,000</td><td class="n">1,059</td><td class="n">900</td><td>4 minibuses &times; 3 days &mdash; re-quote for the Pa Pae run</td></tr>
         <tr><td>Food during the programme</td><td class="n">27,600</td><td class="n">812</td><td class="n">690</td><td>3 lunches, the Pa Pae field dinner, 8 breaks and water</td></tr>
         <tr><td>Collecting kit</td><td class="n">28,600</td><td class="n">841</td><td class="n">715</td><td>44 sets at THB 650 &mdash; required by the President; now also covers printing and borrowed lab materials</td></tr>
+        <tr><td>T-shirt</td><td class="n">13,200</td><td class="n">388</td><td class="n">330</td><td>44 at THB 300, size chosen at registration</td></tr>
         <tr><td>Practical control training</td><td class="n">30,000</td><td class="n">882</td><td class="n">750</td><td>NPMA &mdash; Day 3 budget</td></tr>
         <tr><td>Mushroom Research Center</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Free &mdash; co-organiser, confirmed 16 November 2026</td></tr>
         <tr><td>Welcome dinner</td><td class="n">13,200</td><td class="n">388</td><td class="n">330</td><td>Galae Restaurant, Day 1, 44 at THB 300</td></tr>
@@ -574,9 +576,9 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
         <tr><td>Helper wages</td><td class="n">7,200</td><td class="n">212</td><td class="n">180</td><td>4 helpers &times; 3 days &times; THB 600 &mdash; the usual Thai student day rate</td></tr>
         <tr><td>Light trap and night work</td><td class="n">3,000</td><td class="n">88</td><td class="n">75</td><td>Mains power on site at Pa Pae</td></tr>
         <tr><td>Venue and rooms</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>Confirmed free &mdash; arranged directly with CMU</td></tr>
-        <tr><td>Subtotal</td><td class="n">166,940</td><td class="n">4,910</td><td class="n">123</td><td></td></tr>
-        <tr><td>Contingency, 12%</td><td class="n">20,033</td><td class="n">589</td><td class="n">15</td><td></td></tr>
-        <tr class="total"><td>Core cost</td><td class="n">186,973</td><td class="n">5,499</td><td class="n">137</td><td></td></tr>
+        <tr><td>Subtotal</td><td class="n">180,140</td><td class="n">5,298</td><td class="n">132</td><td></td></tr>
+        <tr><td>Contingency, 12%</td><td class="n">21,617</td><td class="n">636</td><td class="n">16</td><td></td></tr>
+        <tr class="total"><td>Core cost</td><td class="n">201,757</td><td class="n">5,934</td><td class="n">148</td><td></td></tr>
       </tbody>
     </table>
     </div>
@@ -602,6 +604,9 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
       <div class="row"><div class="lbl">Food during programme<span>3 lunches, field dinner, 8 breaks</span></div>
         <div class="track"><div class="bar range" style="width:76.7%"></div><div class="bar firm" style="width:76.7%"></div></div>
         <div class="val">27,600</div></div>
+      <div class="row"><div class="lbl">T-shirt<span>44 at THB 300</span></div>
+        <div class="track"><div class="bar range" style="width:36.7%"></div><div class="bar firm" style="width:36.7%"></div></div>
+        <div class="val">13,200</div></div>
       <div class="row"><div class="lbl">Welcome dinner<span>Day 1, Galae Restaurant</span></div>
         <div class="track"><div class="bar range" style="width:36.7%"></div><div class="bar firm" style="width:36.7%"></div></div>
         <div class="val">13,200</div></div>
@@ -626,7 +631,7 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
       <div class="legend"><span><i class="a"></i>Committed or known</span><span>Scale: 0 to THB 36,000</span><span>Accommodation excluded &mdash; booked separately</span></div>
     </div>
   </div>
-  <div class="foot"><span>Subtotal THB 166,940 &middot; with 12% contingency THB 186,973</span></div>
+  <div class="foot"><span>Subtotal THB 180,140 &middot; with 12% contingency THB 201,757</span></div>
 </section>
 
 <!-- 12 TOTAL -->
@@ -641,13 +646,13 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
           <thead><tr><th>At 40 participants</th><th class="n">USD 200</th><th class="n">USD 220</th><th class="n">USD 230</th></tr></thead>
           <tbody>
             <tr><td>Registration income</td><td class="n">272,000</td><td class="n">299,200</td><td class="n">312,800</td></tr>
-            <tr><td>Core cost</td><td class="n">&minus;186,973</td><td class="n">&minus;186,973</td><td class="n">&minus;186,973</td></tr>
+            <tr><td>Core cost</td><td class="n">&minus;201,757</td><td class="n">&minus;201,757</td><td class="n">&minus;201,757</td></tr>
             <tr><td>25 grants of USD 80</td><td class="n">&minus;68,000</td><td class="n">&minus;68,000</td><td class="n">&minus;68,000</td></tr>
-            <tr class="pick"><td><strong>Left over</strong></td><td class="n pos"><strong>+17,027</strong></td><td class="n pos"><strong>+44,227</strong></td><td class="n pos"><strong>+57,827</strong></td></tr>
-            <tr><td>Non-student places needed, of 15</td><td class="n">13</td><td class="n pos">10</td><td class="n pos">8</td></tr>
+            <tr class="pick"><td><strong>Left over</strong></td><td class="n pos"><strong>+2,243</strong></td><td class="n pos"><strong>+29,443</strong></td><td class="n pos"><strong>+43,043</strong></td></tr>
+            <tr><td>Non-student places needed, of 15</td><td class="n">15</td><td class="n pos">12</td><td class="n pos">10</td></tr>
           </tbody>
         </table>
-        <div class="callout ok">Only 13 of the 15 non-student places need to sell for the Academy to pay for itself.</div>
+        <div class="callout ok">At USD 200, all 15 non-student places need to sell for the Academy to pay for itself.</div>
       </div>
       <div>
         <table>
@@ -849,7 +854,7 @@ tr.pick td,tr.pick th{background:var(--blue-soft)}
   <div class="meta">
     <div><span class="mk">Programme</span><span class="mv">Settled</span></div>
     <div><span class="mk">Venue and beds</span><span class="mv">Identified, bookable</span></div>
-    <div><span class="mk">Core cost</span><span class="mv">THB 186,973</span></div>
+    <div><span class="mk">Core cost</span><span class="mv">THB 201,757</span></div>
     <div><span class="mk">Proposed fee</span><span class="mv">USD 200 all &middot; USD 80 back to students</span></div>
     <div><span class="mk">Blocked on</span><span class="mv">Board decision, 4 Sep</span></div>
   </div>
