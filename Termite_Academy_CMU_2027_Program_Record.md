@@ -196,6 +196,13 @@ Email sent to Dr. Kevin D. Hyde asking to use the Mushroom Research Center on We
 
 **Reply, 16 November 2026.** Kevin D. Hyde agreed ("Yes, it is ok") and asked that arrangements go through Snack (Rawisara Ano, <anorawisara@gmail.com>); Ishika Bera copied. The Mushroom Research Center is a co-organiser and the site is free. Dashboard line set to THB 0.
 
+## Registration Form Content and Accommodation, 24 November 2026
+
+Hor Kok Pheng asked for the registration form content; field list sent. Accommodation:
+
+- Students who want to stay pay the Mae Hia dormitory fee, THB 755 for three nights, in the same registration form as the USD 200 fee.
+- Everyone else books their own hotel. Suggested: Shane Hotel or The Core Gallery Hotel, both close by. The organisers arrange transport pickup.
+
 ## Day 3 Format and Budget, 23 November 2026
 
 Discussed with NPMA. Day 3 has three parts: a visit to a large Chiang Mai PCO company (Rentokil or Unipest), an equipment class, and an outdoor field observation. One company is enough for the indoor parts; the outdoor observation can be with a different company. Day 3 budget set at THB 30,000. Discussion page: Termite_Academy_NPMA_Discussion.html.
